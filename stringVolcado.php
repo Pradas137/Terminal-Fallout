@@ -1,15 +1,15 @@
 <!-- 12 caracteres 17 filas 2 columnas
-6 palabras 5 caracteres 
+6 palabras 5 caracteres
 408 caracteres
 378 Simbolos 30 caracteres de string -->
 
-<?php 
+<?php
     define("CHAR_TOTAL",408);
     $arrayPalabras=["PALA1","PALA2","PALA3","PALA4","PALA5","PALA6"];
-    $arraySimbolos=["<",">",",","`","!","@","#","$","%","^","&","*","(",")","?","\\","|","/",":",";","+","[","]"];
+    $arraySimbolos=["<",">",",","`","!","@","#","$","%","^","&","*","(",")","?","\\","|","/",":",";","+","[","]", "=", "{", "}"];
     $copyArrayPalabras = $arrayPalabras;
     $arrayPosicionesPalabras=[];
-    
+
     while (count($arrayPosicionesPalabras) < 6) {
         $randomNum = rand(0,(CHAR_TOTAL-5));
         $aux = 0;
@@ -24,7 +24,7 @@
         }
     }
 
-    $stringVolcado="";    
+    $stringVolcado="";
     while (strlen($stringVolcado) < CHAR_TOTAL) {
         $posAux = strlen($stringVolcado);
         if (in_array($posAux,$arrayPosicionesPalabras)){

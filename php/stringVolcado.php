@@ -1,19 +1,7 @@
 <?php
-    // 12 caracteres por fila 
-    // 17 filas por columna 
-    // 2 columnas
-    // 6 palabras 5 caracteres
-    // 408 caracteres (378 Simbolos 30 caracteres de string)
-
     define("CHAR_TOTAL",408);
-    $arrayPalabras=["PALAA","PALAS","PALAD","PALAF","PALAG","PALAH"];
-    // $arrayPalabras= require('php/archivo.php')
+    $arrayPalabras=["PALAA","PALAS","PALAD","PALAF","PALAG","PALAH"];   // $arrayPalabras= require('php/archivo.php')
     $lengthPalabra = strlen($arrayPalabras[0]);
-    // $arrayPalabras = require 'diccionarioFallout.php';
-    // foreach ($arrayPalabras as $key) {
-    //     $a = strlen($key);
-    //     echo "$key, len:$a <br><br> ";
-    // }
     $arraySimbolos=["<",">",",","`","!","@","#","$","%","^","&","*","(",")","?","\\","|","/",":",";","+","[","]", "=", "{", "}"];
     $copyArrayPalabras = $arrayPalabras;
     $arrayPosicionesPalabras=[];
@@ -96,14 +84,6 @@
     }
     $copyArrayPalabras = array_diff($arrayPalabras,$arrayCuttedWords);
 
-    // echo "-----------------<br>Palabras";
-    // print_r($arrayPalabras);
-    // echo"<br>PalabrasCortadas";
-    // print_r($arrayCuttedWords);
-    // echo"<br>Palabras sin cortar";
-    // print_r($copyArrayPalabras);
-    // echo "<br>-----------------";
-
     //Add <span> to words that are in a single line
     foreach($copyArrayPalabras as $palabra){
         $repString = "<span id='$palabra' class='word'>$palabra</span>";
@@ -142,11 +122,5 @@
     }
     $thirdCol .= "</div>";
 
-    
-    echo "<div id='root'>";
-    print($stringVolcado);
-    echo "</div><br>";
-    print($firstCol);
-    echo"<br>";
-    print($thirdCol);
-
+    //Insert intro HTML
+    echo "<div id='root'>$firstCol$stringVolcado$thirdCol</div>";

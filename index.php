@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>NukaCola</title>
+    <style>
+        body{
+            color: darkgreen;
+        }
+        div>span{
+            color:red;
+        }
+    </style>
 </head>
 <body>
-    <?php
-        require 'stringVolcado.php';
-    ?>
+    <div id='terminal'>
+        <?php require 'php/stringVolcado.php';?>
+    </div>
 </body>
 </html>

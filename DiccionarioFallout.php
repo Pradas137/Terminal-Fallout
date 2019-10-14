@@ -1,8 +1,9 @@
 <?php
-$archivo = fopen('DiccionarioFallout.txt','r');
+$archivo = fopen('diccionarioFallout.txt','r');
 while ($linea = fgets($archivo)) {
-    $aux[] = $linea;
+    $aux[] = trim($linea);
 }
 fclose($archivo);
-return $aux;
+print_r($aux);
 ?>
+

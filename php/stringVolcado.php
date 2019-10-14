@@ -36,7 +36,7 @@
     }
 
     $arrayLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-    
+
     $countChar=0;
     $filas =0;
 
@@ -45,7 +45,7 @@
         if($countChar == 12){
             if($filas == 16){
                 $countChar = 0;
-                $subString = "</div><div class ='col4'>"; 
+                $subString = "</div><div class ='col4'>";
 
                 $firstPartVolcado = substr($stringVolcado, 0, $pos);
                 $lastPartVolcado = substr($stringVolcado, $pos);
@@ -56,7 +56,7 @@
             }else{
                 $countChar = 0;
                 $filas++;
-                $subString = "<br>"; 
+                $subString = "<br>";
 
                 $firstPartVolcado = substr($stringVolcado, 0, $pos);
                 $lastPartVolcado = substr($stringVolcado, $pos);
@@ -106,7 +106,7 @@
 
     //Create the string that simulates a memory access, in hex
     $accesNum = rand(11,60)*1000;
-    $rows=1;
+    $rows=0;
     $firstCol ="<div class ='col1'>";
     $thirdCol ="<div class ='col3'>";
     while($rows<17){
@@ -123,4 +123,5 @@
     $thirdCol .= "</div>";
 
     //Insert intro HTML
-    echo "<div id='root'>$firstCol$stringVolcado$thirdCol</div>";
+    echo "<div id='root'>$firstCol$stringVolcado$thirdCol";
+    // Close tag div with id 'root' in html

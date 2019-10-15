@@ -8,12 +8,12 @@
     <title>Fallout Hack Terminal</title>
   </head>
   <body class="background">
-    <div class="terminal content">
-      <div>
+    <div id="container" class="terminal content">
+      <div id="gamePanel">
         <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
         <span>ENTER PASSWORD NOW</span>
         <div id="attempts">
-          <span>X ATTEMPT(S) LEFT: </span><span id="tries"></span>
+          <span>ATTEMPT(S) LEFT: </span><span id="tries"></span>
         </div>
         <div id="terminal">
             <?php require 'php/stringVolcado.php';?>
@@ -23,6 +23,7 @@
             </div>
         </div>
       </div>
+      <div id="endPanel" class="hide"><p id="msgEnd"></p></div>
     </div>
   </body>
 </html>

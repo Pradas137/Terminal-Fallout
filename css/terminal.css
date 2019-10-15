@@ -14,15 +14,19 @@ html, body {
   background-color: black;
 }
 
- .terminal {
-   border-radius: 8%;
-   margin-left: auto;
-   margin-right: auto;
-   margin-top: 4%;
-   margin-bottom: auto;
-   height: 550px;
-   width: 800px;
-   padding: 15px;
+.hide{
+  display: none;
+}
+
+.terminal {
+  border-radius: 8%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+  margin-bottom: auto;
+  height: 550px;
+  width: 800px;
+  padding: 15px;
 }
 
 #terminal {

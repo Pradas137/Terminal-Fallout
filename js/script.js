@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
     const password = 'PALAD';   // const password = this.document.getElementById('password').value;
     var tries = 4;
     var gameRun = true;
+    var points;
 
     //Show initial attempts
     renewAttempts();
@@ -72,13 +73,34 @@ window.addEventListener("load", function () {
     }
 
     function win() {
+        points = 100;
         gameRun = false;
-        console.log("has ganado");
+        endPanel(points, true)
     }
 
     function lose() {
+        points = 0;
         gameRun = false;
-        console.log("juego acabado");
+        endPanel(points, false);
+    }
+
+    function endPanel(points, win) {
+        if(win){
+            var msg = "has ganado";
+        }else{
+            var msg = "has perdido";
+        }
+        msg += "<br>Tienes " + points + " puntos";
+
+        //Hide the game panel and show the endPanel
+        var gamePanel = document.getElementById('gamePanel');
+        var endPanel = document.getElementById('endPanel');
+        var msgEnd = document.getElementById('msgEnd');
+        gamePanel.classList += " hide";
+        endPanel.classList = "";
+        msgEnd.innerHTML = msg;
+
+        
     }
 
 });

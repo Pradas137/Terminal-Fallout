@@ -1,6 +1,6 @@
 <?php
 define("CHAR_TOTAL", 408);
-$arrayWords = ["PALAA", "PALAS", "PALAD", "PALAF", "PALAG", "PALAH"];   // $arrayWords= require('php/archivo.php')
+$arrayWords = require('php/diccionario.php');
 $copyArrayWords = $arrayWords;
 $lengthWord = strlen($arrayWords[0]);
 $arraySimbolos = ["<", ">", ",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?", "\\", "|", "/", ":", ";", "+", "[", "]", "=", "{", "}"];

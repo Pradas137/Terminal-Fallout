@@ -1,6 +1,7 @@
 window.addEventListener("load", function () {
     var words = document.getElementsByClassName('word');
-    const password = 'PALAD';   // const password = this.document.getElementById('password').value;
+    const password = this.document.getElementById('password').value;
+    console.log("pass: " + password);
     var tries = 4;
     var gameRun = true;
     var points;
@@ -85,9 +86,9 @@ window.addEventListener("load", function () {
     }
 
     function endPanel(points, win) {
-        if(win){
+        if (win) {
             var msg = "has ganado";
-        }else{
+        } else {
             var msg = "has perdido";
         }
         msg += "<br>Tienes " + points + " puntos";
@@ -100,7 +101,7 @@ window.addEventListener("load", function () {
         endPanel.classList = "";
         msgEnd.innerHTML = msg;
 
-        
+
     }
 
 });

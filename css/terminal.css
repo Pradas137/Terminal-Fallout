@@ -108,9 +108,30 @@ html, body {
 }
 
 #input {
+<<<<<<< HEAD
   background-color: white;
+=======
+>>>>>>> 4f4338e9f20ce5e18a39ac8b740fcec7782b9caf
   float: right;
   order: 5;
   width: 25%;
   margin: 0;
 }
+<<<<<<< HEAD
+=======
+
+.cursor i {
+  position: relative;
+  width: 10px;
+  height: 80%;
+  background-color: #212529;
+  left: 5px;
+  top: 10%;
+  animation: blinker 1s step-start infinite;
+}
+
+.word:hover {
+  background-color: #08B304;
+  color: black;
+}
+>>>>>>> 4f4338e9f20ce5e18a39ac8b740fcec7782b9caf

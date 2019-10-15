@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/terminal.css">
+    <script src="js/script.js"></script>
     <title>Fallout Hack Terminal</title>
   </head>
   <body class="background">
@@ -12,7 +13,7 @@
         <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
         <span>ENTER PASSWORD NOW</span>
         <div id="attempts">
-          <span>X ATTEMPT(S) LEFT: </span><span id="tries">* * * *</span>
+          <span>X ATTEMPT(S) LEFT: </span><span id="tries"></span>
         </div>
         <div id="terminal">
             <?php require 'php/stringVolcado.php';?>

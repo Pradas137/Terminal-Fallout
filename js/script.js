@@ -1,74 +1,84 @@
 window.addEventListener("load", function () {
     var words = document.getElementsByClassName('word');
-    const password = this.document.getElementById('password').value;
+    const password = 'PALAD';   // const password = this.document.getElementById('password').value;
     var tries = 4;
+    var gameRun = true;
 
+    //Show initial attempts
+    renewAttempts();
+
+    //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
         words[index].addEventListener("click", checkPassword);
     };
 
     function checkPassword(event) {
-        if (event.target.id === password) {
-            win();
-        } else {
-            checkCoincidentChar(event.target.id);
+        if (gameRun) {
+            if (event.target.id === password) {
+                win();
+            } else {
+                checkCoincidentChar(event.target.id);
+            }
         }
     }
 
     function checkCoincidentChar(word) {
-        console.log("comprobando coincidencias");
-        var coincident = 0;
-        for (let i = 0; i <word.length; i++) {
-            if(word[i]===password[i]){
-                coincident++;
+        var coincidentChar = 0;
+        for (let i = 0; i < word.length; i++) {
+            if (word[i] === password[i]) {
+                coincidentChar++;
             }
         }
-        //Ponemos puntitos en la string
+        //Change the letters for dots
         var wordSpan = document.getElementById(word);
-        var stringPoints = "";
-        spanValue=wordSpan.innerHTML;
+        var stringDots = "";
+        spanValue = wordSpan.innerHTML;
         for (let index = 0; index < spanValue.length; index++) {
-            if(spanValue[index] === "<"){
-                stringPoints += "<br>"
-                index +=3;
-            }else{
-                stringPoints +="."
+            if (spanValue[index] === "<") {
+                stringDots += "<br>";
+                index += 3;
+            } else {
+                stringDots += ".";
             }
         }
-        wordSpan.innerHTML = stringPoints;
+        wordSpan.innerHTML = stringDots;
 
-        //eliminamos la clase y el evento
+        //Remove the class and the eventlistener
         wordSpan.classList.remove('word');
         wordSpan.removeEventListener("click", checkPassword);
 
-        //decimos cuantas letras coinciden
-        console.log("Coinciden "+coincident+" letras");
+        //show how many letters match
+        console.log(word);
+        console.log("Coinciden " + coincidentChar + " letras");
 
-        //si no quedan vidas temina el juego
+        //Subtract one attempt, redraw the attempts marker and checks if you have more attempts
         tries--;
-        if(tries == 0){
-            endgame();
-        }else{
-            renewTries();
+        renewAttempts();
+        if (tries == 0) {
+            lose();
         }
-        
+
     }
 
-    function renewTries() {
-        trieselement = document.getElementById('tries');
-        charTrie = "█ ";    //String que representa una vida
-        stringTrie = "";
+    function renewAttempts() {
+        triesElement = document.getElementById('tries');
+        charTrie = "█ ";    //This char represents an attempt
+        attemptMarker = "";
         for (let index = 0; index < tries; index++) {
-            stringTrie += charTrie;
+            attemptMarker += charTrie;
         }
-        trieselement.innerHTML = stringTrie;
-        
+        triesElement.innerHTML = attemptMarker;
+
     }
+
     function win() {
+        gameRun = false;
         console.log("has ganado");
     }
 
-
-
+    function lose() {
+        gameRun = false;
+        console.log("juego acabado");
+    }
 
 });

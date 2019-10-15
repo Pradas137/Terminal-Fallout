@@ -22,8 +22,6 @@
                 </div>
                 <!-- <input type="text" name="" value=""> -->
                 <i></i>Sección en la que el usuario añadirá datos
-                <p>Palabra elegida por el Servidor:</p>
-                <?php require 'php/diccionario.php' ?>
               </div>
             </div>
         </div>

@@ -7,9 +7,5 @@
     $index = array_rand($words);
     fclose($file);
 
-    $pass = $words[$index];
-
-    echo $pass;
-
-    return $pass;
+    return $words[$index];
 ?>

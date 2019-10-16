@@ -1,12 +1,11 @@
 # Terminal-Fallout
-# Terminal-Fallout:
 
 -Projecto del minijuego de terminal de hackeo de Fallout.
 
 #Programadores:
 
-1-Ruben
-2-Ferran Soto.
+1-Ruben.
+2-Ferran Herrero.
 3-Adrian Pradas.
 
 #Instalacion:

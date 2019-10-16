@@ -12,7 +12,7 @@
 
 #Instalacion:
 	
-	descargar Archivos git
+descargar Archivos git
 	
 Con linux necesitas: var/www/htm 
 

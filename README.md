@@ -1,26 +1,26 @@
 # Terminal-Fallout
+Proyecto del minijuego de terminal de hackeo de Fallout.
 
--Projecto del minijuego de terminal de hackeo de Fallout.
+## Equipo
+- Ruben
+- Ferran Herrero
+- Adrián Pradas
 
-#Programadores:
+## Instalación
+Con Linux necesitas: [Apache+PHP](https://www.digitalocean.com/community/tutorials/como-instalar-linux-apache-mysql-php-lamp-en-ubuntu-14-04-es)
 
-1-Ruben.
+Con Windows necesitas: [XAMPP](http://www.mclibre.org/consultar/php/otros/xampp-instalacion-windows.html)
 
-2-Ferran Herrero.
+Bajar la [Release](https://github.com/RubenHCCH/Terminal-Fallout/releases), y descomprimir y pasar la carpeta resultante al servidor
 
-3-Adrian Pradas.
+La ruta predeterminada que los servidores web de Linux usan es `/var/www/html` 
 
-#Instalacion:
-	
-descargar Archivos git
-	
-Con linux necesitas: var/www/htm 
+La ruta predeterminada que los servidores web de Windows usan es `C:/xampp/htdocs`
 
-Con Windows necesitas: xamp/htdocs (http://www.mclibre.org/consultar/php/otros/xampp-instalacion-windows.html)
+Para empezar tienes que arrancar el Apache, y luego en tu navegador acceder: localhost/Terminal-Fallout
 
-#Construido con:
-
-1-PHP.
-2-CSS3.
-3-HTML5.
-4-JavaScript.
+## Construido con
+- PHP
+- JavaScript
+- CSS3
+- HTML5

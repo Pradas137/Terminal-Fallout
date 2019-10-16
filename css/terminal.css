@@ -102,6 +102,9 @@ html, body {
   color: black;
 }
 
+#endPanel {
+  position: absolute;
+}
 /* Responsive styles and media query */
 
 @media screen and (max-height: 750px) and (max-width: 1300px) {

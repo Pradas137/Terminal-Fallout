@@ -5,14 +5,18 @@
 #Programadores:
 
 1-Ruben.
+
 2-Ferran Herrero.
+
 3-Adrian Pradas.
 
 #Instalacion:
 	
 	descargar Archivos git
-Con linux necesitas: var/www/htm
-Con Windows necesitas: xamp/htdocs
+	
+Con linux necesitas: var/www/htm 
+
+Con Windows necesitas: xamp/htdocs (http://www.mclibre.org/consultar/php/otros/xampp-instalacion-windows.html)
 
 #Construido con:
 

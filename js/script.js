@@ -98,12 +98,12 @@ window.addEventListener("load", function () {
         var endPanel = document.getElementById('endPanel');
         var msgEnd = document.getElementById('msgEnd');
         gamePanel.classList += " hide";
-        endPanel.classList = "";
+        endPanel.classList = "terminal";
         msgEnd.innerHTML = msg;
     }
 
     //Get the word and how many chars are coincident and print this information in the prompt,
-    //this prompt is an array with 17 holes (one for each row) and works like a queue 
+    //this prompt is an array with 17 holes (one for each row) and works like a queue
     function renewPrompt(word, coincidentChar) {
         promptQueue(word);
         promptQueue("Entry Denied");

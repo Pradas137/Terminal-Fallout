@@ -26,15 +26,11 @@ html, body {
   margin-bottom: auto;
   height: 550px;
   width: 800px;
-  padding: 15px;
+  padding: 25px 15px;
 }
 
 #terminal {
   font-size: 22px;
-}
-
-.content {
-  padding: 25px 15px;
 }
 
 #attempts, #title {

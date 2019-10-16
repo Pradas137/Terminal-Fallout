@@ -17,8 +17,8 @@
         </div>
         <div id="terminal">
             <?php require 'php/stringVolcado.php';?>
-              <div id="input">
-                Sección en la que el usuario añadirá datos
+              <div class="input">
+                <div id="prompt"></div>
               </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 window.addEventListener("load", function () {
     var words = document.getElementsByClassName('word');
-    const password = this.document.getElementById('password').value;
-    console.log("pass: " + password);
+    var prompt = document.getElementById('prompt');
+    const passwordValue = document.getElementById('password').value;
+    var arrayPrompt = Array(17).fill("<br>");
     var tries = 4;
     var gameRun = true;
     var points;
@@ -16,7 +17,7 @@ window.addEventListener("load", function () {
 
     function checkPassword(event) {
         if (gameRun) {
-            if (event.target.id === password) {
+            if (event.target.id === passwordValue) {
                 win();
             } else {
                 checkCoincidentChar(event.target.id);
@@ -27,7 +28,7 @@ window.addEventListener("load", function () {
     function checkCoincidentChar(word) {
         var coincidentChar = 0;
         for (let i = 0; i < word.length; i++) {
-            if (word[i] === password[i]) {
+            if (word[i] === passwordValue[i]) {
                 coincidentChar++;
             }
         }
@@ -49,19 +50,18 @@ window.addEventListener("load", function () {
         wordSpan.classList.remove('word');
         wordSpan.removeEventListener("click", checkPassword);
 
-        //show how many letters match
-        console.log(word);
-        console.log("Coinciden " + coincidentChar + " letras");
-
-        //Subtract one attempt, redraw the attempts marker and checks if you have more attempts
+        //Subtract one attempt, redraw the attempts marker, renews the prompt and checks if you have more attempts
         tries--;
         renewAttempts();
         if (tries == 0) {
             lose();
+        } else {
+            renewPrompt(word, coincidentChar);
         }
 
     }
 
+    //Draw the charTrie as many times as attempts remain
     function renewAttempts() {
         triesElement = document.getElementById('tries');
         charTrie = "█ ";    //This char represents an attempt
@@ -93,15 +93,27 @@ window.addEventListener("load", function () {
         }
         msg += "<br>Tienes " + points + " puntos";
 
-        //Hide the game panel and show the endPanel
+        //Hide the gamePanel and show the endPanel
         var gamePanel = document.getElementById('gamePanel');
         var endPanel = document.getElementById('endPanel');
         var msgEnd = document.getElementById('msgEnd');
         gamePanel.classList += " hide";
         endPanel.classList = "";
         msgEnd.innerHTML = msg;
-
-
     }
 
+    //Get the word and how many chars are coincident and print this information in the prompt,
+    //this prompt is an array with 17 holes (one for each row) and works like a queue 
+    function renewPrompt(word, coincidentChar) {
+        promptQueue(word);
+        promptQueue("Entry Denied");
+        promptQueue("Likeness=" + coincidentChar);
+        prompt.innerHTML = arrayPrompt.join("");
+    }
+
+    //Removes the frist element from the array and one in the queue
+    function promptQueue(value) {
+        arrayPrompt.shift();
+        arrayPrompt.push(">" + value + "<br>");
+    }
 });

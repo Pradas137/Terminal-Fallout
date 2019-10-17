@@ -1,0 +1,86 @@
+html, body {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.4vw;
+  color: #08B304;
+  overflow: hidden;
+}
+
+.background {
+  background-image: url("../resources/background_screen.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: black;
+}
+
+.hide{
+  display: none;
+}
+
+.terminal {
+  border-radius: 8%;
+  margin-left: 25%;
+  margin-right: auto;
+  margin-top: 5vw;
+  margin-bottom: auto;
+  width: 45%;
+  padding: 25px 15px;
+}
+
+#terminal {
+  font-size: 1.4vw;
+}
+
+#attempts, #title {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+#root {
+  display: flex;
+}
+
+.col1 {
+  float: left;
+  width: 14%;
+  margin: 0;
+  order: 1;
+}
+
+.col2 {
+  float: left;
+  width: 23%;
+  margin: 0;
+  order: 2;
+}
+
+.col3 {
+  float: left;
+  width: 14%;
+  margin: 0;
+  order: 3;
+}
+
+.col4 {
+  float: right;
+  width: 23%;
+  margin: 0;
+  order: 4;
+}
+
+.input {
+  float: right;
+  order: 5;
+  width: 26%;
+  margin: 0;
+}
+
+.word:hover {
+  background-color: #08B304;
+  color: black;
+}
+
+#endPanel {
+  position: relative;
+}

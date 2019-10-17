@@ -73,25 +73,24 @@ window.addEventListener("load", function () {
 
     }
 
+    //points system  and ranking in development
     function win() {
-        points = 100;
         gameRun = false;
-        endPanel(points, true)
+        endPanel(true)
     }
 
     function lose() {
         points = 0;
         gameRun = false;
-        endPanel(points, false);
+        endPanel(false, points);
     }
 
-    function endPanel(points, win) {
+    function endPanel(win, points) {
         if (win) {
-            var msg = "has ganado";
+            var msg = ">Password Accepted";
         } else {
-            var msg = "has perdido";
+            var msg = "Terminal blocked: <br>" + points + " points";
         }
-        msg += "<br>Tienes " + points + " puntos";
 
         //Hide the gamePanel and show the endPanel
         var gamePanel = document.getElementById('gamePanel');

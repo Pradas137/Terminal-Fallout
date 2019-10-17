@@ -1,6 +1,6 @@
 <?php
 define("CHAR_TOTAL", 408);
-$arrayWords = require('php/diccionario.php');
+$arrayWords = require('php/loadDictionary.php');
 $copyArrayWords = $arrayWords;
 $lengthWord = strlen($arrayWords[0]);
 $arraySimbolos = ["<", ">", ",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?", "\\", "|", "/", ":", ";", "+", "[", "]", "=", "{", "}"];
@@ -11,7 +11,7 @@ $arrayWordsPosition = [];
 while (count($arrayWordsPosition) < 6) {
     $randomNum = rand(0, (CHAR_TOTAL - $lengthWord));
     $engaged = false;
-    if ($randomNum < (CHAR_TOTAL / 2) - $lengthWord - 1 or $randomNum > (CHAR_TOTAL / 2)) {
+    if ($randomNum < (CHAR_TOTAL / 2) - $lengthWord or $randomNum > (CHAR_TOTAL / 2)) {
         foreach ($arrayWordsPosition as $position) {
             if ($randomNum < ($position + $lengthWord + 2) and $randomNum > ($position - $lengthWord - 2)) {
                 $engaged = true;
@@ -34,7 +34,7 @@ while (strlen($stringDump) < CHAR_TOTAL) {
     }
 }
 
-//Breack up the line every 12 chars, also divide equally the long string in 2 divs (this 2 divs are not opened and closed properly yet)
+//Breack up the line every 12 chars, also divide equally the stringDump in 2 divs (this 2 divs are not opened and closed properly yet)
 $countChar = 0;
 $row = 0;
 for ($pos = 0; $pos < strlen($stringDump); $pos++) {
@@ -72,12 +72,11 @@ $stringDump = str_replace("&lt;/div&gt;&lt;div class ='col4'&gt;", "</div><div c
 
 //Add <span> to words
 foreach ($arrayWords as $word) {
-    $repString = "<span id='$word' class='word'>$word</span>";
     for ($i = 0; $i < strlen($word); $i++) {
-        if ($i == 0) {
+        if ($i == 0) {  //Only for words that are in the same line
             $repString = "<span id='$word' class='word'>$word</span>";
             $stringDump = str_replace($word, $repString, $stringDump);
-        } else {
+        } else {        //For words that are divided in differents lines
             $subString = substr($word, 0, $i) . "<br>" . substr($word, $i);
             $repString = "<span id='$word' class='word'>$subString</span>";
             $stringDump = str_replace($subString, $repString, $stringDump);

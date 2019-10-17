@@ -19,14 +19,14 @@
           <span>ATTEMPT(S) LEFT: </span><span id="tries"></span>
         </div>
         <div id="terminal">
-            <?php require 'php/stringVolcado.php';?>
+            <?php require 'php/stringDump.php';?>
               <div class="input">
                 <div id="prompt"></div>
               </div>
             </div>
         </div>
       </div>
-      <div id="endPanel" class="terminal  hide"><p id="msgEnd"></p></div>
+      <div id="endPanel" class="terminal hide"><p id="msgEnd"></p></div>
     </div>
   </body>
 </html>

@@ -5,10 +5,12 @@ window.addEventListener("load", function () {
     var arrayPrompt = Array(17).fill("<br>");
     var tries = 4;
     var gameRun = true;
-    var points;
+    var failedAttempts = 0;
+    var gameTime = "0:01";
 
     //Show initial attempts
     renewAttempts();
+    test();
 
     //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
@@ -50,8 +52,9 @@ window.addEventListener("load", function () {
         wordSpan.classList.remove('word');
         wordSpan.removeEventListener("click", checkPassword);
 
-        //Subtract one attempt, redraw the attempts marker, renews the prompt and checks if you have more attempts
+        //Subtract one attempt,add a failed attempt, redraw the attempts marker, renews the prompt and checks if you have more attempts
         tries--;
+        failedAttempts++;
         renewAttempts();
         if (tries == 0) {
             lose();
@@ -73,32 +76,33 @@ window.addEventListener("load", function () {
 
     }
 
-    //points system  and ranking in development
+    //put the failed attempts and the game time in the HTML form to send all the data for ranking
     function win() {
-        gameRun = false;
-        endPanel(true)
+        document.getElementById("failedAttempts").value = failedAttempts;
+        document.getElementById("gameTime").value = gameTime;
+        endGame(true)
     }
 
     function lose() {
-        points = 0;
-        gameRun = false;
-        endPanel(false, points);
+        endGame(false);
     }
 
-    function endPanel(win, points) {
-        if (win) {
-            var msg = ">Password Accepted";
-        } else {
-            var msg = "Terminal blocked: <br>" + points + " points";
-        }
-
-        //Hide the gamePanel and show the endPanel
+    function endGame(win) {
+        gameRun = false;
+        //Hide the gamePanel and show the win or lose panel
         var gamePanel = document.getElementById('gamePanel');
-        var endPanel = document.getElementById('endPanel');
-        var msgEnd = document.getElementById('msgEnd');
         gamePanel.classList += " hide";
-        endPanel.classList = "terminal";
-        msgEnd.innerHTML = msg;
+
+        if (win) {
+            var winPanel = document.getElementById('winPanel');
+            winPanel.classList = "terminal";
+            setTimeout(function () {
+                document.getElementById("rankigForm").classList = "";
+            }, 400); //todo change value
+        } else {
+            var losePanel = document.getElementById('losePanel');
+            losePanel.classList = "terminal";
+        }
     }
 
     //Get the word and how many chars are coincident and print this information in the prompt,
@@ -114,5 +118,15 @@ window.addEventListener("load", function () {
     function promptQueue(value) {
         arrayPrompt.shift();
         arrayPrompt.push(">" + value + "<br>");
+    }
+
+    //only for test purposes
+    function test() {
+        document.getElementById('testwin').addEventListener("click", function () {
+            failedAttempts = 2;
+            gameTime = "0:45"
+            win();
+        });
+        document.getElementById('testlose').addEventListener("click", lose);
     }
 });

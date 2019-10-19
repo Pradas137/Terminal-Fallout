@@ -32,7 +32,7 @@
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">
                 <input type="hidden" name="gameTime" id="gameTime">
-                <input type="submit" value="Submit">
+                <input type="image" src="../resources/button.png" alt="submit" width="30%">
               </form>
             </div>
       </div>

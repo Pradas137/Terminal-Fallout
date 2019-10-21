@@ -7,6 +7,31 @@ window.addEventListener("load", function () {
     var gameRun = true;
     var failedAttempts = 0;
     var gameTime = "0:01";
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var milLabel = document.getElementById("miliseconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+    var startTime = Date.now();
+    var intervalMilliseconds = setInterval(function() {
+        var elapsedTime = Date.now() - startTime;
+        document.getElementById("miliseconds").innerHTML = (elapsedTime / 1000).toFixed(3);
+    }, 10);
+
+    function setTime() {
+      ++totalSeconds;
+      secondsLabel.innerHTML = pad(totalSeconds % 60);
+      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
 
     //Show initial attempts
     renewAttempts();

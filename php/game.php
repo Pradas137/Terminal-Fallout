@@ -11,7 +11,10 @@
   <body class="background">
     <div id="container" class="terminal">
       <div id="gamePanel">
-        <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
+        <div id="header-container">
+          <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
+          <p id="timer"><label id="minutes">00</label>:<label id="seconds">00</label>:<label id="miliseconds">00</label></p>
+        </div>
         <span>ENTER PASSWORD NOW</span>
         <div id="attempts">
           <span>ATTEMPT(S) LEFT: </span><span id="tries"></span>

@@ -28,6 +28,16 @@ html, body {
   padding: 25px 15px;
 }
 
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 #terminal {
   font-size: 1.4vw;
 }
@@ -100,5 +110,5 @@ html, body {
   margin-top: 10px;
   color: #08B304;
   display: inline-block;
-  
+
 }

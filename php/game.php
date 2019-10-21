@@ -19,7 +19,7 @@
         <div id="terminal">
             <?php require './stringDump.php';?>
               <div class="input">
-                <div id="prompt"></div>
+                <div id="prompt">><p class="blink"> █</p></div>
               </div>
             </div>
         </div>

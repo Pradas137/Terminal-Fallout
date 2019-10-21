@@ -1,6 +1,6 @@
 <?php
     //Create an array with the words in the file
-    $file = fopen('./resources/dictionary.txt','r');
+    $file = fopen('../resources/dictionary.txt','r');
     while ($line = fgets($file)) {
         $arrayAllWords[] = trim(strtoupper($line));
     }

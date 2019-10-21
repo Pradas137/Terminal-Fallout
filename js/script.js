@@ -6,6 +6,15 @@ window.addEventListener("load", function () {
     var tries = 4;
     var gameRun = true;
     var points;
+    var width = window.screen.width;
+    var height = window.screen.height;
+
+    console.log(width, height);
+
+    if (width < 550 || height < 470) {
+      location.replace("./views/screenoff.html")
+
+    }
 
     //Show initial attempts
     renewAttempts();
@@ -115,4 +124,5 @@ window.addEventListener("load", function () {
         arrayPrompt.shift();
         arrayPrompt.push(">" + value + "<br>");
     }
+
 });

@@ -18,16 +18,19 @@
         </div>
         <div id="terminal">
             <?php require './stringDump.php';?>
-              <div class="input">
-                <div id="prompt">><p class="blink"> █</p></div>
+              <div class="input" id="prompt-position">
+                <div id="prompt"></div>
+                <div id="cursor">
+                  <p>></p><p class="blink">█</p>
+                </div>
               </div>
             </div>
         </div>
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-              <h3>Felicidades has ganado</h3>
-              <h5>Introduce tu nombre para aparecer en el ranking</h5>
+              <h3><< == Terminal Unblocked == >></h3>
+              <h5>Insert your name for add your points to ranking:</h5>
               <form action="../index.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">

@@ -64,7 +64,6 @@ html, body {
   float: right;
 }
 
-
 #attempts, #title {
   margin-bottom: 2%;
   margin-top: 0;
@@ -128,31 +127,32 @@ html, body {
   position: relative;
 }
 
-#rankigForm{
+#rankigForm {
   text-align: center;
   margin-top: -90px;
 }
 
-#rankigForm input[type=text]{
+#rankigForm input[type=text] {
   border: 3px solid #08B304;
   border-radius: 20px;
   width: 100%;
   text-align: center;
 }
 
-#rankigForm input[type=image]{
+#rankigForm input[type=image] {
   margin-top: 10px;
   color: #08B304;
   display: inline-block;
-  
 }
 
 /* Test only */
-.symbol{
+
+.symbol {
   color: red;
 }
-.word{
-  color:yellow;
+
+.word {
+  color: yellow;
 }
 
 /* Responsive styles and media query */
@@ -166,7 +166,7 @@ html, body {
     top: 35%;
     padding: 4%;
   }
-  #gamePanel {
+  #gamePanel, #winPanel, #losePanel {
     display: none;
   }
   .background {
@@ -207,43 +207,50 @@ html, body {
   }
 }
 
-
-#losePanel{
+#losePanel {
   text-align: center;
-  margin-top: -70px;
+  margin-top: -0;
+  margin-left: 19%;
 }
 
-#losePanel input[type=text]{
+#winPanel{
+  text-align: center;
+  margin-top: 12%;
+  margin-left: 19%;
+}
+
+#losePanel input[type=text] {
   border: 3px solid #08B304;
   border-radius: 20px;
   width: 100%;
   text-align: center;
 }
 
-#losePanel input[type=image]{
+#losePanel input[type=image] {
   margin-top: 10px;
   color: #08B304;
   display: inline-block;
-
 }
 
+.buttons {
+  margin-top: 4%;
+  display: inline-block;
+}
 
 .button {
-  border-radius: 4px;
   background-color: #000501;
-  border: none;
+  border: 1px solid #08B304;
   color: #08B304;
   text-align: center;
-  font-size: 18px;
-  padding: 10px;
-  width: 80px;
+  font-size: 1.25vw;
+  padding: 4%;
   transition: all 0.5s;
   cursor: pointer;
+  width: 100%;
   margin: 5px;
 }
 
-
-.button:hover{
+.button:hover {
   background-color: #08B304;
   color: black;
 }

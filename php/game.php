@@ -40,29 +40,26 @@
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-              <h3><input type="image" src="../resources/boy.jpg" alt="submit" width="50%"></h3>
-              <h5>Enter your name to appear in the ranking</h5>
+              <img src="../resources/boy.jpg" alt="winBoy" width="85%">
+              <p>Enter your name to appear in the ranking</p>
               <form action="../index.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">
                 <input type="hidden" name="gameTime" id="gameTime">
-                <input type="image" src="../resources/button.jpg" alt="submit" width="30%">
+                <input type="image" src="../resources/button.png" alt="submit" width="25%">
               </form>
             </div>
       </div>
       <div id="losePanel" class="terminal hide">
-        <h5>Terminal Failed:</h5>
-        <h3><input type="image" src="../resources/hongo-atómico-nuclear.jpg" alt="submit" width="50%"></h3>
-        <h5>You have failed</h5>
-        <button onclick="window.location.href='../index.php'" class="button">Menu</button>
-        <button onclick="window.location.href='./ranking.php'" class="button">Ranking</button>
+        <h3>Terminal blocked.</h3>
+        <img src="../resources/nuclear_fungus.jpg" alt="nuclear fungus" width="75%">
+        <div class="buttons">
+          <button onclick="window.location.reload()" class="button again">Play Again</button><br>
+          <button onclick="window.location.href='../index.php'" class="button">Menu</button>
+          <button onclick="window.location.href='./ranking.php'" class="button">Ranking</button>
+        </div>
       </div>
     </div>
     <div id="rotate">Turn your device or resize your browser</div>
-    <!-- only for test purposes -->
-    <footer>
-      <h3>Tests:</h3>
-      <button id='testwin'>win</button><button id="testlose">lose</button>
-    </footer>
   </body>
 </html>

@@ -11,6 +11,7 @@
 <body>
   <h1>Menu</h1>
   <button onclick="window.location.href='php/game.php'">Game</button><br>
+  <button onclick="window.location.href='php/ranking.php'">Ranking</button>
   <?php
   if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
     $record = $_POST["name"] . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";

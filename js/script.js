@@ -2,7 +2,7 @@ window.addEventListener("load", function () {
     var words = document.getElementsByClassName('word');
     var prompt = document.getElementById('prompt');
     const passwordValue = document.getElementById('password').value;
-    var arrayPrompt = Array(17).fill("<br>");
+    var arrayPrompt = Array(16).fill("<br>");
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;

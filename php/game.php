@@ -9,6 +9,14 @@
     <title>Fallout Hack Terminal</title>
   </head>
   <body class="background">
+    <!-- only for test purposes -->
+    <!-- <script src="../js/test.js"></script> -->
+    <header>
+      <h3>Tests:</h3>
+      <button id='testwin'>win</button><button id="testlose">lose</button><br>
+      <span id="passtest"></span>
+    </header>
+    <!--  -->
     <div id="container" class="terminal">
       <div id="gamePanel">
         <div id="header-container">
@@ -32,9 +40,8 @@
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-            <input type="text" onclick="end()" hidden>
-              <h3><< == Terminal Unblocked == >></h3>
-              <h5>Insert your name for add your points to ranking:</h5>
+              <h3>YOU WIN</h3>
+              <h5>Enter your name to appear in the ranking</h5>
               <form action="../index.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">
@@ -47,6 +54,7 @@
         lose
       </div>
     </div>
+    <div id="rotate">Turn your device or resize your browser</div>
     <!-- only for test purposes -->
     <footer>
       <h3>Tests:</h3>

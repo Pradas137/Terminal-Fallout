@@ -1,2 +1,0 @@
-Ferran;3;0:01
-ferran;1;4

@@ -14,32 +14,17 @@ html, body {
   background-color: black;
 }
 
-.hide{
+.hide, #rotate {
   display: none;
 }
 
 .terminal {
-  border-radius: 8%;
   margin-left: 25%;
   margin-right: auto;
-  margin-top: 5vw;
+  margin-top: 4.5vw;
   margin-bottom: auto;
-  width: 45%;
-  padding: 25px 15px;
-}
-
-.blink {
-  animation: blinker 1s step-start infinite;
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
-}
-
-#terminal {
-  font-size: 1.4vw;
+  width: 50%;
+  padding: 2%;
 }
 
 #cursor {
@@ -79,9 +64,20 @@ html, body {
   float: right;
 }
 
-#attempts {
-  margin-bottom: 10px;
+
+#attempts, #title {
+  margin-bottom: 2%;
   margin-top: 0;
+}
+
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
 
 #root {
@@ -123,7 +119,7 @@ html, body {
   margin: 0;
 }
 
-.word:hover {
+.word:hover, .symbol:hover {
   background-color: #08B304;
   color: black;
 }
@@ -147,5 +143,65 @@ html, body {
   margin-top: 10px;
   color: #08B304;
   display: inline-block;
+  
+}
 
+/* Test only */
+.symbol{
+  color: red;
+}
+.word{
+  color:yellow;
+}
+
+/* Responsive styles and media query */
+
+@media (orientation: portrait) {
+  #rotate {
+    display: block !important;
+    font-size: 5vh;
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    padding: 4%;
+  }
+  #gamePanel {
+    display: none;
+  }
+  .background {
+    background: black;
+  }
+}
+
+@media only screen and (max-width: 1250px) and (min-width: 1150px) {
+  body {
+    font-size: 2.2vh;
+  }
+  .terminal {
+    margin-top: 10vw;
+    margin-left: 20%;
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1150px) and (min-width: 900px) {
+  body {
+    font-size: 2.5vh;
+  }
+  .terminal {
+    margin-top: 8vw;
+    margin-left: 18%;
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 800px) {
+  body {
+    font-size: 2.5vh;
+  }
+  .terminal {
+    margin-top: 12vw;
+    margin-left: 7%;
+    width: 85%;
+  }
 }

@@ -51,5 +51,11 @@
         lose
       </div>
     </div>
+    <div id="rotate">Turn your device or resize your browser</div>
+    <!-- only for test purposes -->
+    <footer>
+      <h3>Tests:</h3>
+      <button id='testwin'>win</button><button id="testlose">lose</button>
+    </footer>
   </body>
 </html>

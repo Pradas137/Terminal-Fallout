@@ -7,11 +7,13 @@ window.addEventListener("load", function () {
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
-    var gameTime = "0:01";
+    var startTime = Date.now();
 
     //Show initial attempts
     renewAttempts();
-    test();
+    test();     //only for test purposes
+    //Start chronometer
+    setInterval(clockRunning, 10);
 
     //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
@@ -40,7 +42,8 @@ window.addEventListener("load", function () {
     function checkPassword(event) {
         if (gameRun) {
             if (event.target.id === passwordValue) {
-                win();
+                var timeDiff = new Date() - startTime;  //in ms
+                win(timeDiff);
             } else {
                 failedAttempts++;
                 checkCoincidentChar(event.target.id);
@@ -110,9 +113,9 @@ window.addEventListener("load", function () {
     }
 
     //Fill the failed attempts and the game time, in the HTML form, to send all the data for the ranking
-    function win() {
+    function win(finalTime) {
         document.getElementById("failedAttempts").value = failedAttempts;
-        document.getElementById("gameTime").value = gameTime;
+        document.getElementById("gameTime").value = finalTime;
         endGame(true)
     }
 
@@ -192,6 +195,20 @@ window.addEventListener("load", function () {
         tries = 4;
         renewAttempts();
     }
+
+    //Calcualtes the time
+    function clockRunning() {
+        var timeElapsed = new Date(Date.now() - startTime)
+            , min = timeElapsed.getUTCMinutes()
+            , sec = timeElapsed.getUTCSeconds()
+            , ms = timeElapsed.getUTCMilliseconds();
+
+        //Render the time in the HTML
+        document.getElementById("display-area").innerHTML =
+            (min > 9 ? min : "0" + min) + ":" +
+            (sec > 9 ? sec : "0" + sec) + "." +
+            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
+    };
 
     //only for test purposes
     function test() {

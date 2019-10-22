@@ -51,6 +51,20 @@ html, body {
   margin-right: 5px;
 }
 
+#header-container {
+  display: inline-block;
+  width: 100%;
+}
+
+#title {
+  float: left;
+}
+
+#timer {
+  float: right;
+}
+
+
 #attempts, #title {
   margin-bottom: 2%;
   margin-top: 0;

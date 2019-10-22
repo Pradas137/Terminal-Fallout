@@ -29,8 +29,8 @@
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-              <h3><< == Terminal Unblocked == >></h3>
-              <h5>Insert your name for add your points to ranking:</h5>
+              <h3>YOU WIN</h3>
+              <h5>Enter your name to appear in the ranking</h5>
               <form action="../index.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">

@@ -14,15 +14,14 @@ html, body {
   background-color: black;
 }
 
-.hide{
+.hide, #rotate {
   display: none;
 }
 
 .terminal {
-  border-radius: 8%;
   margin-left: 25%;
   margin-right: auto;
-  margin-top: 5vw;
+  margin-top: 4.5vw;
   margin-bottom: auto;
   width: 50%;
   padding: 2%;
@@ -88,28 +87,31 @@ html, body {
 }
 
 #endPanel {
-
   position: relative;
 }
 
 /* Responsive styles and media query */
+
 @media (orientation: portrait) {
-  #rotate{
+  #rotate {
     display: block !important;
     font-size: 5vh;
     text-align: center;
-    height: 100%;
-    width: 100%;
-    padding-top: 75%;;
+    position: absolute;
+    top: 35%;
+    padding: 4%;
   }
-  #gamePanel{display:none;}
-  .background{background: black;}
+  #gamePanel {
+    display: none;
+  }
+  .background {
+    background: black;
+  }
 }
 
 @media only screen and (max-width: 1250px) and (min-width: 1150px) {
-  body{
+  body {
     font-size: 2.2vh;
-
   }
   .terminal {
     margin-top: 10vw;
@@ -117,10 +119,10 @@ html, body {
     width: 55%;
   }
 }
-@media only screen and (max-width: 1150px) and (min-width: 900px) {
-  body{
-    font-size: 2.5vh;
 
+@media only screen and (max-width: 1150px) and (min-width: 900px) {
+  body {
+    font-size: 2.5vh;
   }
   .terminal {
     margin-top: 8vw;
@@ -128,10 +130,10 @@ html, body {
     width: 65%;
   }
 }
-@media only screen and (max-width: 900px) and (min-width: 800px)  {
-  body{
-    font-size: 2.5vh;
 
+@media only screen and (max-width: 900px) and (min-width: 800px) {
+  body {
+    font-size: 2.5vh;
   }
   .terminal {
     margin-top: 12vw;

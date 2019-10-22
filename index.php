@@ -28,5 +28,6 @@
       </div>
       <div id="endPanel" class="terminal hide"><p id="msgEnd"></p></div>
     </div>
+    <div id="rotate">Turn your device or resize your browser</div>
   </body>
 </html>

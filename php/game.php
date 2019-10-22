@@ -13,7 +13,7 @@
       <div id="gamePanel">
         <div id="header-container">
           <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
-          <p id="timer"> <output id="display-area">00:00:00.000</output></p>
+          <p id="timer"> <output id="display-area">00:00.000</output></p>
         </div>
         <span>ENTER PASSWORD NOW</span>
         <div id="attempts">

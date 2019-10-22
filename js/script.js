@@ -6,51 +6,13 @@ window.addEventListener("load", function () {
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
-    var gameTime = "";
     var startTime = Date.now();
-    var timeBegan = null, timeStopped = null, stoppedDuration = 0, started = null;
-
-    if (timeBegan === null) {
-        timeBegan = new Date();
-    }
-
-    if (timeStopped !== null) {
-        stoppedDuration += (new Date() - timeStopped);
-    }
-    console.log(stoppedDuration);
-
-    started = setInterval(clockRunning, 10);
-    function clockRunning(){
-        var currentTime = new Date()
-            , timeElapsed = new Date(currentTime - timeBegan - stoppedDuration)
-            , hour = timeElapsed.getUTCHours()
-            , min = timeElapsed.getUTCMinutes()
-            , sec = timeElapsed.getUTCSeconds()
-            , ms = timeElapsed.getUTCMilliseconds();
-
-        document.getElementById("display-area").innerHTML =
-            (hour > 9 ? hour : "0" + hour) + ":" +
-            (min > 9 ? min : "0" + min) + ":" +
-            (sec > 9 ? sec : "0" + sec) + "." +
-            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
-    };
-
-    var currentTime = new Date()
-            , timeElapsed = new Date(currentTime - timeBegan - stoppedDuration)
-            , hour = timeElapsed.getUTCHours()
-            , min = timeElapsed.getUTCMinutes()
-            , sec = timeElapsed.getUTCSeconds()
-            , ms = timeElapsed.getUTCMilliseconds();
-
-        document.getElementById("display-area").innerHTML =
-            (hour > 9 ? hour : "0" + hour) + ":" +
-            (min > 9 ? min : "0" + min) + ":" +
-            (sec > 9 ? sec : "0" + sec) + "." +
-            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms)
 
     //Show initial attempts
     renewAttempts();
-    test();
+    test();     //only for test purposes
+    //Start chronometer
+    setInterval(clockRunning, 10);
 
     //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
@@ -60,15 +22,8 @@ window.addEventListener("load", function () {
     function checkPassword(event) {
         if (gameRun) {
             if (event.target.id === passwordValue) {
-                var endTime = new Date();
-                var timeDiff = endTime - startTime; //in ms
-                // strip the ms
-                timeDiff /= 1000;
-
-                // get seconds
-                var finalTime = Math.round(timeDiff);
-                console.log(finalTime + " seconds");
-                win(finalTime);
+                var timeDiff = new Date() - startTime;  //in ms
+                win(timeDiff);
             } else {
                 checkCoincidentChar(event.target.id);
             }
@@ -167,6 +122,20 @@ window.addEventListener("load", function () {
         arrayPrompt.shift();
         arrayPrompt.push(">" + value + "<br>");
     }
+
+    //Calcualtes the time
+    function clockRunning() {
+        var timeElapsed = new Date(Date.now() - startTime)
+            , min = timeElapsed.getUTCMinutes()
+            , sec = timeElapsed.getUTCSeconds()
+            , ms = timeElapsed.getUTCMilliseconds();
+
+        //Render the time in the HTML
+        document.getElementById("display-area").innerHTML =
+            (min > 9 ? min : "0" + min) + ":" +
+            (sec > 9 ? sec : "0" + sec) + "." +
+            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
+    };
 
     //only for test purposes
     function test() {

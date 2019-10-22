@@ -11,7 +11,6 @@ window.addEventListener("load", function () {
 
     //Show initial attempts
     renewAttempts();
-    test();     //only for test purposes
     //Start chronometer
     setInterval(clockRunning, 10);
 
@@ -77,13 +76,11 @@ window.addEventListener("load", function () {
         //If the <span> is a Symbol, we will use the innerText to get the value,to avoid the escaped text that innerHTML would return
         if (targetSpan.className === "symbol") {
             spanValue = targetSpan.innerText;
-            console.log("Text(symbol)" + spanValue + " len:" + spanValue.length);   //DEBUG
             targetSpan.classList.remove('symbol');
             targetSpan.removeEventListener("click", symbolHelp);
             //If the <span> is a word, we will use the innerHTML to get the value that includes '<br>'
         } else if (targetSpan.className === "word") {
             spanValue = targetSpan.innerHTML;
-            console.log("HTML(word)" + spanValue + " len:" + spanValue.length);     //DEBUG
             targetSpan.classList.remove('word');
             targetSpan.removeEventListener("click", checkPassword);
         }
@@ -167,8 +164,6 @@ window.addEventListener("load", function () {
     function removeDudWord() {
         var currentWords = document.getElementsByClassName('word');
         var spanPassword = document.getElementById(passwordValue);
-        console.log("current words " + currentWords);                  //DEBUG
-        console.log("currentWords.length: " + currentWords.length);    //DEBUG
         if (currentWords.length > 1) {
             var posPassInArray;
             for (let index = 0; index < currentWords.length; index++) {
@@ -176,7 +171,6 @@ window.addEventListener("load", function () {
                     posPassInArray = index;
                 }
             }
-            console.log("indexpass" + posPassInArray);                 //debug
             var randomDudWord;
             while (randomDudWord === undefined) {
                 //Generate a random number to select a word (not the password) and delete it
@@ -209,15 +203,4 @@ window.addEventListener("load", function () {
             (sec > 9 ? sec : "0" + sec) + "." +
             (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
     };
-
-    //only for test purposes
-    function test() {
-        document.getElementById("passtest").innerHTML = document.getElementById('password').value;
-        document.getElementById('testwin').addEventListener("click", function () {
-            failedAttempts = 2;
-            gameTime = "0:45"
-            win();
-        });
-        document.getElementById('testlose').addEventListener("click", lose);
-    }
 });

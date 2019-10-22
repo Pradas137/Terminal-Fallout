@@ -60,8 +60,8 @@ html, body {
   float: left;
 }
 
-#timer {
-  float: right;
+#display-area {
+  margin-left: 27%;
 }
 
 #attempts, #title {

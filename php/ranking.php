@@ -14,7 +14,7 @@
     <h1>Ranking</h1>
     <?php
     //Import all the records from the file and append them to an array
-    $records = explode("\n", trim(file_get_contents('../resources/rankingDataMock.txt'))); //todo change file
+    $records = explode("\n", trim(file_get_contents('../resources/rankingData.txt')));
 
     //Separate the records by failed attempts and add them to an array of arrays,
     //where the index indicates how many attempts are failed

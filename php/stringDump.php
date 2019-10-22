@@ -47,7 +47,6 @@ while (count($arrayHelps) < 3) {
 }
 
 //Generate 3 random position to place our help string
-echo ("<br>Posicionayudas:");  //DEBUG
 $arrayHelpsPosition = [];
 $index = 0;
 while (count($arrayHelpsPosition) < 3) {
@@ -58,7 +57,6 @@ while (count($arrayHelpsPosition) < 3) {
         $finalPos = $randomRow * 12 + $rowPos;
         array_push($busyRows, $randomRow);
         array_push($arrayHelpsPosition, $finalPos);
-        echo "<br>index: $index,row: $randomRow, rowPos:$rowPos, finalPos:$finalPos";   //DEBUG
         $index++;
     }
 }

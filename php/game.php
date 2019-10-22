@@ -43,6 +43,7 @@
         lose
       </div>
     </div>
+    <div id="rotate">Turn your device or resize your browser</div>
     <!-- only for test purposes -->
     <footer>
       <h3>Tests:</h3>

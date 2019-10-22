@@ -3,13 +3,14 @@ define("CHAR_TOTAL", 408);
 $arrayWords = require('./loadDictionary.php');
 $copyArrayWords = $arrayWords;
 $lengthWord = strlen($arrayWords[0]);
-$arraySimbolos = ["<", ">", ",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?", "\\", "|", "/", ":", ";", "+", "[", "]", "=", "{", "}"];
-$arrayLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+$arraySymbols = [",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "?", "\\", "|", "/", ":", ";", "+", "="];
+$arrayOpenBrackets = ["<", "(", "[", "{"];
+$arrayCloseBrackets = [">", ")", "]", "}"];
 
 //Get 6 random positions to put our random words without overlapping
 $arrayWordsPosition = [];
 while (count($arrayWordsPosition) < 6) {
-    $randomNum = rand(0, (CHAR_TOTAL - $lengthWord));
+    $randomNum = rand(0, (CHAR_TOTAL - $lengthWord) - 1);
     $engaged = false;
     if ($randomNum < (CHAR_TOTAL / 2) - $lengthWord or $randomNum > (CHAR_TOTAL / 2)) {
         foreach ($arrayWordsPosition as $position) {
@@ -23,14 +24,56 @@ while (count($arrayWordsPosition) < 6) {
     }
 }
 
-//Create one string with symbols and our words placed in the space that we created before
+//Establish the occupeied rows
+$busyRows = [];
+foreach ($arrayWordsPosition as $pos) {
+    array_push($busyRows, floor($pos / 12));
+}
+array_unique($busyRows);
+
+//Geneate 3 random helps
+$arrayHelps = [];
+while (count($arrayHelps) < 3) {
+    $randomLen = rand(1, 10);
+    $braketType = rand(0, count($arrayOpenBrackets) - 1);
+    $help = "";
+    while (strlen($help) < $randomLen) {
+        $help .= $arraySymbols[rand(0, count($arraySymbols) - 1)];
+    }
+    //Add the open and close brakets
+    $help = $arrayOpenBrackets[$braketType] . $help;
+    $help .= $arrayCloseBrackets[$braketType];
+    array_push($arrayHelps, $help);
+}
+
+//Generate 3 random position to place our help string
+echo ("<br>Posicionayudas:");  //DEBUG
+$arrayHelpsPosition = [];
+$index = 0;
+while (count($arrayHelpsPosition) < 3) {
+    $randomRow = rand(0, (CHAR_TOTAL / 12) - 1);
+    if (!in_array($randomRow, $busyRows) and !in_array(($randomRow - 1), $busyRows)) {
+        $lengthHelpByIndex = strlen($arrayHelps[$index]);
+        $rowPos = rand(0, (12 - $lengthHelpByIndex));
+        $finalPos = $randomRow * 12 + $rowPos;
+        array_push($busyRows, $randomRow);
+        array_push($arrayHelpsPosition, $finalPos);
+        echo "<br>index: $index,row: $randomRow, rowPos:$rowPos, finalPos:$finalPos";   //DEBUG
+        $index++;
+    }
+}
+
+//Create one string with symbols and our words and helps placed in the space that we created before
 $stringDump = "";
 while (strlen($stringDump) < CHAR_TOTAL) {
     $currentPos = strlen($stringDump);
     if (in_array($currentPos, $arrayWordsPosition)) {
         $stringDump .= array_shift($copyArrayWords);
+    } else if (in_array($currentPos, $arrayHelpsPosition)) {
+        $index = array_search($currentPos, $arrayHelpsPosition);
+        $stringDump .= $arrayHelps[$index];
     } else {
-        $stringDump .= $arraySimbolos[rand(0, count($arraySimbolos) - 1)];
+        $stringDump .= $arraySymbols[rand(0, count($arraySymbols) - 1)];
     }
 }
 
@@ -84,6 +127,12 @@ foreach ($arrayWords as $word) {
     }
 }
 
+//Add <span> to the helps with the class symbol
+foreach ($arrayHelps as  $help) {
+    $helpSpan = "<span id='$help' class='symbol'>" . htmlspecialchars($help) . "</span>";
+    $stringDump = str_replace(htmlspecialchars($help), $helpSpan, $stringDump);
+}
+
 //Open and close the previous <div>
 $stringDump = "<div class ='col2'>" . $stringDump;
 $stringDump .= "</div>";
@@ -106,5 +155,6 @@ while ($rows < 34) {
 }
 $thirdCol .= "</div>";
 
-//Insert intro HTML, the div with id 'root' will be closed html
+//Insert the 'stringDump' and the 'simulated memory columns' into the HTML,
+//The div with id 'root' will be closed in the html
 echo "<div id='root'>$firstCol$stringDump$thirdCol";

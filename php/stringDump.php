@@ -1,6 +1,6 @@
 <?php
 define("CHAR_TOTAL", 408);
-$arrayWords = require('php/loadDictionary.php');
+$arrayWords = require('./loadDictionary.php');
 $copyArrayWords = $arrayWords;
 $lengthWord = strlen($arrayWords[0]);
 $arraySimbolos = ["<", ">", ",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "?", "\\", "|", "/", ":", ";", "+", "[", "]", "=", "{", "}"];

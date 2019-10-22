@@ -9,6 +9,14 @@
     <title>Fallout Hack Terminal</title>
   </head>
   <body class="background">
+    <!-- only for test purposes -->
+    <!-- <script src="../js/test.js"></script> -->
+    <header>
+      <h3>Tests:</h3>
+      <button id='testwin'>win</button><button id="testlose">lose</button><br>
+      <span id="passtest"></span>
+    </header>
+    <!--  -->
     <div id="container" class="terminal">
       <div id="gamePanel">
         <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>

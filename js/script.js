@@ -6,32 +6,47 @@ window.addEventListener("load", function () {
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
-    var gameTime = "0:01";
-    var minutesLabel = document.getElementById("minutes");
-    var secondsLabel = document.getElementById("seconds");
-    var milLabel = document.getElementById("miliseconds");
-    var totalSeconds = 0;
-    setInterval(setTime, 1000);
+    var gameTime = "";
     var startTime = Date.now();
-    var intervalMilliseconds = setInterval(function() {
-        var elapsedTime = Date.now() - startTime;
-        document.getElementById("miliseconds").innerHTML = (elapsedTime / 1000).toFixed(3);
-    }, 10);
+    var timeBegan = null, timeStopped = null, stoppedDuration = 0, started = null;
 
-    function setTime() {
-      ++totalSeconds;
-      secondsLabel.innerHTML = pad(totalSeconds % 60);
-      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    if (timeBegan === null) {
+        timeBegan = new Date();
     }
 
-    function pad(val) {
-      var valString = val + "";
-      if (valString.length < 2) {
-        return "0" + valString;
-      } else {
-        return valString;
-      }
+    if (timeStopped !== null) {
+        stoppedDuration += (new Date() - timeStopped);
     }
+    console.log(stoppedDuration);
+
+    started = setInterval(clockRunning, 10);
+    function clockRunning(){
+        var currentTime = new Date()
+            , timeElapsed = new Date(currentTime - timeBegan - stoppedDuration)
+            , hour = timeElapsed.getUTCHours()
+            , min = timeElapsed.getUTCMinutes()
+            , sec = timeElapsed.getUTCSeconds()
+            , ms = timeElapsed.getUTCMilliseconds();
+
+        document.getElementById("display-area").innerHTML =
+            (hour > 9 ? hour : "0" + hour) + ":" +
+            (min > 9 ? min : "0" + min) + ":" +
+            (sec > 9 ? sec : "0" + sec) + "." +
+            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
+    };
+
+    var currentTime = new Date()
+            , timeElapsed = new Date(currentTime - timeBegan - stoppedDuration)
+            , hour = timeElapsed.getUTCHours()
+            , min = timeElapsed.getUTCMinutes()
+            , sec = timeElapsed.getUTCSeconds()
+            , ms = timeElapsed.getUTCMilliseconds();
+
+        document.getElementById("display-area").innerHTML =
+            (hour > 9 ? hour : "0" + hour) + ":" +
+            (min > 9 ? min : "0" + min) + ":" +
+            (sec > 9 ? sec : "0" + sec) + "." +
+            (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms)
 
     //Show initial attempts
     renewAttempts();
@@ -45,7 +60,15 @@ window.addEventListener("load", function () {
     function checkPassword(event) {
         if (gameRun) {
             if (event.target.id === passwordValue) {
-                win();
+                var endTime = new Date();
+                var timeDiff = endTime - startTime; //in ms
+                // strip the ms
+                timeDiff /= 1000;
+
+                // get seconds
+                var finalTime = Math.round(timeDiff);
+                console.log(finalTime + " seconds");
+                win(finalTime);
             } else {
                 checkCoincidentChar(event.target.id);
             }
@@ -102,9 +125,9 @@ window.addEventListener("load", function () {
     }
 
     //put the failed attempts and the game time in the HTML form to send all the data for ranking
-    function win() {
+    function win(finalTime) {
         document.getElementById("failedAttempts").value = failedAttempts;
-        document.getElementById("gameTime").value = gameTime;
+        document.getElementById("gameTime").value = finalTime;
         endGame(true)
     }
 

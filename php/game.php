@@ -26,8 +26,11 @@
         </div>
         <div id="terminal">
             <?php require './stringDump.php';?>
-              <div class="input">
+              <div class="input" id="prompt-position">
                 <div id="prompt"></div>
+                <div id="cursor">
+                  <p>></p><p class="blink">█</p>
+                </div>
               </div>
             </div>
         </div>

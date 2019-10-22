@@ -28,8 +28,42 @@ html, body {
   padding: 25px 15px;
 }
 
+.blink {
+  animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 #terminal {
   font-size: 1.4vw;
+}
+
+#cursor {
+  flex-direction: column;
+  position: absolute;
+  bottom: -5%;
+}
+
+#cursor p {
+  height: auto;
+}
+
+#prompt-position {
+  flex-direction: column;
+  position: relative;
+}
+
+#prompt {
+  flex-direction: column;
+}
+
+#prompt-position p {
+  display: inline-block;
+  margin-right: 5px;
 }
 
 #attempts, #title {

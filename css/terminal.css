@@ -22,7 +22,7 @@ html, body {
   border-radius: 8%;
   margin-left: 25%;
   margin-right: auto;
-  margin-top: 5vw;
+  /* margin-top: 5vw; */
   margin-bottom: auto;
   width: 45%;
   padding: 25px 15px;
@@ -76,7 +76,7 @@ html, body {
   margin: 0;
 }
 
-.word:hover {
+.word:hover, .symbol:hover {
   background-color: #08B304;
   color: black;
 }
@@ -101,4 +101,12 @@ html, body {
   color: #08B304;
   display: inline-block;
   
+}
+
+/* Test only */
+.symbol{
+  color: red;
+}
+.word{
+  color:yellow;
 }

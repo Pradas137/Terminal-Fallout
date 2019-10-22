@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/ranking.css">
     <title>Ranking</title>
 </head>
 
@@ -23,18 +25,26 @@
         $rankingByAttempts[$attempts][count($rankingByAttempts[$attempts])] = $splitedRecord;
     }
 
-
-    //prints $rankingByAttempts
-    foreach ($rankingByAttempts as $key => $array) {
-        echo "===intetnos: $key===<br>";
-        foreach ($array as $att) {
-            echo "-----elemento---- <br>";
-            print_r($att);
-            echo "<br>";
-        }
-        echo '<br>';
+    foreach ($rankingByAttempts as $subArray) {
+        usort($subArray, function ($a, $b) {
+            return $a[2] <=> $b[2];
+        });
     }
+
+
+    //prints $rankingByAttempts like a table
+    echo "<table>";
+    echo "<tr><th>RANK</th><th>NAME</th><th>ATTEMPTS</th><th>TIME</th></tr>";
+    $index = 1;
+    foreach ($rankingByAttempts as $array) {
+        foreach ($array as  $att) {
+            echo "<tr><td>".$index."</td><td>".$att[0]."</td><td>".$att[1]."</td><td>".$att[2]."</tr>";
+            $index++;
+        }
+    }
+    echo "</table>";
     ?>
+    
 </body>
 
 </html>

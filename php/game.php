@@ -18,21 +18,24 @@
         </div>
         <div id="terminal">
             <?php require './stringDump.php';?>
-              <div class="input">
+              <div class="input" id="prompt-position">
                 <div id="prompt"></div>
+                <div id="cursor">
+                  <p>></p><p class="blink">█</p>
+                </div>
               </div>
             </div>
         </div>
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-              <h3>Felicidades has ganado</h3>
-              <h5>Introduce tu nombre para aparecer en el ranking</h5>
+              <h3>YOU WIN</h3>
+              <h5>Enter your name to appear in the ranking</h5>
               <form action="../index.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">
                 <input type="hidden" name="gameTime" id="gameTime">
-                <input type="submit" value="Submit">
+                <input type="image" src="../resources/button.png" alt="submit" width="30%">
               </form>
             </div>
       </div>
@@ -40,6 +43,7 @@
         lose
       </div>
     </div>
+    <div id="rotate">Turn your device or resize your browser</div>
     <!-- only for test purposes -->
     <footer>
       <h3>Tests:</h3>

@@ -17,7 +17,7 @@ La ruta predeterminada que los servidores web de Linux usan es `/var/www/html`
 
 La ruta predeterminada que los servidores web de Windows usan es `C:/xampp/htdocs`
 
-Para empezar tienes que arrancar el Apache, y luego en tu navegador acceder: localhost/Terminal-Fallout
+Para empezar tienes que arrancar el Apache, y luego en tu navegador acceder: localhost/Terminal-Fallout-master
 
 ## Construido con
 - PHP

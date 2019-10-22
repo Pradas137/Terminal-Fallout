@@ -121,6 +121,7 @@ html, body {
 
 #rankigForm{
   text-align: center;
+  margin-top: -90px;
 }
 
 #rankigForm input[type=text]{
@@ -135,4 +136,45 @@ html, body {
   color: #08B304;
   display: inline-block;
 
+}
+
+
+#losePanel{
+  text-align: center;
+  margin-top: -70px;
+}
+
+#losePanel input[type=text]{
+  border: 3px solid #08B304;
+  border-radius: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+#losePanel input[type=image]{
+  margin-top: 10px;
+  color: #08B304;
+  display: inline-block;
+
+}
+
+
+.button {
+  border-radius: 4px;
+  background-color: #000501;
+  border: none;
+  color: #08B304;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+.button:hover{
+  background-color: #08B304;
+  color: black;
 }

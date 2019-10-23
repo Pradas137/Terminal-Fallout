@@ -14,7 +14,7 @@
   <button onclick="window.location.href='php/ranking.php'">Ranking</button>
   <?php
   if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
-    $record = $_POST["name"] . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";
+    $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";
     $fileRankingData = './resources/rankingData.txt';
     if (file_exists($fileRankingData)) {
       $previousData = file_get_contents($fileRankingData);

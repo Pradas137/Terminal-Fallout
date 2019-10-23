@@ -6,3 +6,4 @@ Carla;4;18147
 Carlos;2;6412
 Maria;0;6819
 Mariano;1;16045
+Ruben;1;7552

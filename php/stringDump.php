@@ -70,8 +70,18 @@ while (strlen($stringDump) < CHAR_TOTAL) {
     } else if (in_array($currentPos, $arrayHelpsPosition)) {
         $index = array_search($currentPos, $arrayHelpsPosition);
         $stringDump .= $arrayHelps[$index];
-    } else {
-        $stringDump .= $arraySymbols[rand(0, count($arraySymbols) - 1)];
+    } else {;
+        if( in_array((floor(strlen($stringDump) / 12)), $busyRows)){
+            $stringDump .= $arraySymbols[rand(0, count($arraySymbols) - 1)];
+        }else{
+            if (floor(strlen($stringDump) / 12)%2 == 0) {
+                $auxArraySymbol = array_merge($arraySymbols,$arrayCloseBrackets);
+                $stringDump .= $auxArraySymbol[rand(0, count($auxArraySymbol) - 1)];
+            }else{
+                $auxArraySymbol = array_merge($arraySymbols,$arrayOpenBrackets);
+                $stringDump .= $auxArraySymbol[rand(0, count($auxArraySymbol) - 1)];
+            }
+        }
     }
 }
 

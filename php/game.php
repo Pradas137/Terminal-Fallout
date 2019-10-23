@@ -10,7 +10,7 @@
   </head>
   <body class="background">
     <div id="container" class="terminal">
-      <div id="gamePanel">
+      <div id="gamePanel" class="screenEffect">
         <div id="header-container">
           <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
         </div>

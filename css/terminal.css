@@ -145,18 +145,7 @@ html, body {
   display: inline-block;
 }
 
-/* Test only */
-
-.symbol {
-  color: red;
-}
-
-.word {
-  color: yellow;
-}
-
 /* Responsive styles and media query */
-
 @media (orientation: portrait) {
   #rotate {
     display: block !important;
@@ -253,4 +242,58 @@ html, body {
 .button:hover {
   background-color: #08B304;
   color: black;
+}
+
+/* Effect of an old-style screen display 
+https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
+.screenEffect {
+  animation:colorPulse 6s infinite ease-in-out;
+  box-sizing:border-box;
+  overflow:hidden;
+  position: absolute;
+}
+
+.screenEffect:before {
+  animation:wave 15s infinite ease-in-out;
+  content:"";
+  height:100%;
+  left:0;
+  opacity:0.15;
+  position:absolute;
+  right:0;
+}
+
+.screenEffect:after {
+  content:"";
+  left:0;
+  pointer-events:none;
+}
+
+@keyframes colorPulse {
+  0%, 100% {
+    color:#08B304;
+  }
+  48%, 52% {
+    color:#005a00;
+  }
+  50% {
+    color:#013101;
+  }
+}
+
+@keyframes wave {
+  0% {
+    box-shadow:0 -10vh 20vh #0c0;
+    top:-100vh;
+  }
+  48%, 52% {
+    box-shadow:0 -10vh 20vh #090;
+  }
+  50% {
+    box-shadow:0 -10vh 20vh #060;
+  }
+  100% {
+    box-shadow:0 -10vh 20vh #0c0;
+    top:200vh;
+  }
 }

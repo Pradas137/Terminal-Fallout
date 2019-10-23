@@ -9,21 +9,13 @@
     <title>Fallout Hack Terminal</title>
   </head>
   <body class="background">
-    <!-- only for test purposes -->
-    <!-- <script src="../js/test.js"></script> -->
-    <header>
-      <h3>Tests:</h3>
-      <button id='testwin'>win</button><button id="testlose">lose</button><br>
-      <span id="passtest"></span>
-    </header>
-    <!--  -->
     <div id="container" class="terminal">
-      <div id="gamePanel">
+      <div id="gamePanel" class="screenEffect">
         <div id="header-container">
           <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
-          <p id="timer"> <output id="display-area">00:00.000</output></p>
         </div>
         <span>ENTER PASSWORD NOW</span>
+        <output id="display-area">00:00.000</output>
         <div id="attempts">
           <span>ATTEMPT(S) LEFT: </span><span id="tries"></span>
         </div>

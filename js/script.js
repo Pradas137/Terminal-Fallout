@@ -180,8 +180,6 @@ window.addEventListener("load", function () {
                 }
             }
             spanToDots(currentWords[randomDudWord].id);
-        } else {
-            console.log("No hay palabras para quitar") //TODO preguntar que pasa en este caso
         }
     }
 

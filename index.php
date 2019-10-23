@@ -5,13 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/mainMenu.css">
   <title>Game Menu</title>
 </head>
 
 <body>
-  <h1>Menu</h1>
-  <button onclick="window.location.href='php/game.php'">Game</button><br>
-  <button onclick="window.location.href='php/ranking.php'">Ranking</button>
+  <div class="container">
+    <h1>Terminal Fallout</h1>
+    <div class="buttons">
+      <button onclick="window.location.href='php/game.php'">Game</button>
+      <button onclick="window.location.href='php/ranking.php'">Ranking</button>
+    </div>
+  </div>
+  
   <?php
   if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
     $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";

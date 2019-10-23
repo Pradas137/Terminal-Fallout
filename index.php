@@ -1,30 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/terminal.css">
-    <script src="js/script.js"></script>
-    <title>Fallout Hack Terminal</title>
-  </head>
-  <body class="background">
-    <div id="container" class="terminal">
-      <div id="gamePanel">
-        <p id="title">ROBCO INDUSTRIES (TM) TERMINAL PROTOCOL</p>
-        <span>ENTER PASSWORD NOW</span>
-        <div id="attempts">
-          <span>ATTEMPT(S) LEFT: </span><span id="tries"></span>
-        </div>
-        <div id="terminal">
-            <?php require 'php/stringDump.php';?>
-              <div class="input">
-                <div id="prompt"></div>
-              </div>
-            </div>
-        </div>
-      </div>
-      <div id="endPanel" class="terminal hide"><p id="msgEnd"></p></div>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/mainMenu.css">
+  <title>Game Menu</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Terminal Fallout</h1>
+    <div class="buttons">
+      <button onclick="window.location.href='php/game.php'">Game</button>
+      <button onclick="window.location.href='php/ranking.php'">Ranking</button>
     </div>
-  </body>
+  </div>
+  
+  <?php
+  if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
+    $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";
+    $fileRankingData = './resources/rankingData.txt';
+    if (file_exists($fileRankingData)) {
+      $previousData = file_get_contents($fileRankingData);
+    } else {
+      $previousData = '';
+    }
+    file_put_contents($fileRankingData, "$previousData$record");
+
+    //Prevent multiple entry of the same data if the user reload the page
+    header('Location: ./index.php');
+  }
+  ?>
+</body>
+
 </html>

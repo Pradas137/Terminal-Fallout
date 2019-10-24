@@ -20,7 +20,7 @@ La ruta predeterminada del servidores en Windows es `C:/xampp/htdocs`
 
 Para empezar  arrancar Apache, y luego en tu navegador acceder: localhost/(nombreCarpeta)
 
-## [Servidor web](rubenhc.ml)
+## [Servidor web](http://rubenhc.ml)
 
 ## [Retrospectiva](https://github.com/RubenHCCH/Terminal-Fallout/wiki/Retrospective-Sprint2)
 

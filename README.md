@@ -13,10 +13,16 @@ Con Windows necesitas: [XAMPP](http://www.mclibre.org/consultar/php/otros/xampp-
 Descargar la [Release](https://github.com/RubenHCCH/Terminal-Fallout/releases), y descomprimir y mover la carpeta resultante al servidor
 
 La ruta predeterminada del servidores en Linux es: `/var/www/html` 
+
 También necesitaremos conceder permisos `chown -R www-data:www-data /var/www`
+
 La ruta predeterminada del servidores en Windows es `C:/xampp/htdocs`
 
 Para empezar  arrancar Apache, y luego en tu navegador acceder: localhost/(nombreCarpeta)
+
+## [Servidor web](rubenhc.ml)
+
+## [Retrospectiva](https://github.com/RubenHCCH/Terminal-Fallout/wiki/Retrospective-Sprint2)
 
 ## Construido con
 - PHP

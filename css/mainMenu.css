@@ -13,12 +13,12 @@ h1 {
     margin-bottom: 3%;
     margin-top: 7%;
     -webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-.container {
+#container {
     width: 80%;
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
 }
 
@@ -34,17 +34,18 @@ h1 {
     animation: vibrate-1 0.3s linear infinite both;
 }
 
-.buttons>button {
+.buttons>button, .buttons>input[type=submit] {
+    text-transform: uppercase;
     padding: 2%;
     font-family: 'Share Tech Mono', monospace;
     background-color: #000501;
     border: 2px solid #08B304;
     color: #08B304;
-    font-size: 2.5vw;
+    font-size: 2.1vw;
     cursor: pointer;
     width: 75%;
     text-align: center;
-    margin-top: 3%;
+    margin-top: 2.5%;
     margin-left: 10%;
 
     /* Add shadow */
@@ -147,5 +148,4 @@ h1 {
         font-size: 2.5vh;
         margin-bottom: 2%;
     }
-  }
-  
+}

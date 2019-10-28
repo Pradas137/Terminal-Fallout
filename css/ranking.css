@@ -15,11 +15,10 @@ table {
     text-align: right;
     border: 2px solid green;
     border-spacing: 0;
-
     /* Add shadow */
-    -webkit-box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
-    -moz-box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
-    box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
+    -webkit-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
 }
 
 tr>th {
@@ -39,9 +38,9 @@ tr:hover, .button:hover {
     color: #000501;
     background-color: #08B304;
     transition: all 0.5s;
-    
 }
-.button:hover{
+
+.button:hover {
     -webkit-animation: vibrate-1 0.3s linear infinite both;
     animation: vibrate-1 0.3s linear infinite both;
 }
@@ -59,9 +58,9 @@ tr:hover, .button:hover {
     margin-left: 10%;
     
     /* Add shadow */
-    -webkit-box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
-    -moz-box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
-    box-shadow: 24px 22px 7px 5px rgba(0,0,0,0.64);
+    -webkit-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
 }
 
 @media (orientation: portrait) {

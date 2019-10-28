@@ -1,15 +1,53 @@
 <?php
 define("CHAR_TOTAL", 408);
-$arrayWords = require('./loadDictionary.php');
-$copyArrayWords = $arrayWords;
-$lengthWord = strlen($arrayWords[0]);
 $arraySymbols = [",", "`", "!", "@", "#", "$", "%", "^", "&", "*", "?", "\\", "|", "/", ":", ";", "+", "="];
 $arrayOpenBrackets = ["<", "(", "[", "{"];
 $arrayCloseBrackets = [">", ")", "]", "}"];
 
-//Get 6 random positions to put our random words without overlapping
+//Default variables (easy mode)
+$difficulty = "5";
+$numWords = 6;
+$numHelps = 3;
+
+//Get the parameters of the GET request, and verify if are valid parameters 
+if (isset($_GET["difficulty"]) and in_array($_GET["difficulty"], ["normal", "hard"])) {
+    if ($_GET["difficulty"] == "normal") {
+        $numWords = 10;
+        echo "<input id='difficulty' type='hidden' value='normal'>";
+    } else if ($_GET["difficulty"] == "hard") {
+        $numHelps = 1;
+        $numWords = 12;
+        echo "<input id='difficulty' type='hidden' value='hard'>";
+    }
+    $difficulty = "7";
+}
+
+//Insert in the HTML if the gamemode is hardcore
+if (isset($_GET["hardcore"]) and $_GET["hardcore"] == "on") {
+    echo "<input id='hardcore' type='hidden' value='on'>";
+}
+
+//Import the words from the json
+$jsonArray = json_decode(file_get_contents("../resources/dictionary.json"), true);
+$arrayAllWords = $jsonArray[$difficulty];
+
+//Select the random words and creates an array
+$arrayWords = [];
+while (count($arrayWords) < $numWords) {
+    $randomNum = rand(0, count($arrayAllWords) - 1);
+    if (!in_array(strtoupper($arrayAllWords[$randomNum]), $arrayWords)) {
+        array_push($arrayWords, strtoupper($arrayAllWords[$randomNum]));
+    }
+}
+
+//Selects a words as password, from the previous array and insert in the HTML 
+$password = $arrayWords[rand(0, count($arrayWords) - 1)];
+echo "<input id='password' type='hidden' value=\"$password\">";
+
+//Get the random positions to put our random words without overlapping
 $arrayWordsPosition = [];
-while (count($arrayWordsPosition) < 6) {
+$lengthWord = strlen($arrayWords[0]);
+while (count($arrayWordsPosition) < count($arrayWords)) {
     $randomNum = rand(0, (CHAR_TOTAL - $lengthWord) - 1);
     $engaged = false;
     if ($randomNum < (CHAR_TOTAL / 2) - $lengthWord or $randomNum > (CHAR_TOTAL / 2)) {
@@ -31,9 +69,9 @@ foreach ($arrayWordsPosition as $pos) {
 }
 array_unique($busyRows);
 
-//Geneate 3 random helps
+//Geneate the random helps
 $arrayHelps = [];
-while (count($arrayHelps) < 3) {
+while (count($arrayHelps) < $numHelps) {
     $randomLen = rand(1, 10);
     $braketType = rand(0, count($arrayOpenBrackets) - 1);
     $help = "";
@@ -46,10 +84,10 @@ while (count($arrayHelps) < 3) {
     array_push($arrayHelps, $help);
 }
 
-//Generate 3 random position to place our help string
+//Generate the random position to place our help string
 $arrayHelpsPosition = [];
 $index = 0;
-while (count($arrayHelpsPosition) < 3) {
+while (count($arrayHelpsPosition) < count($arrayHelps)) {
     $randomRow = rand(0, (CHAR_TOTAL / 12) - 1);
     if (!in_array($randomRow, $busyRows) and !in_array(($randomRow - 1), $busyRows)) {
         $lengthHelpByIndex = strlen($arrayHelps[$index]);
@@ -63,6 +101,7 @@ while (count($arrayHelpsPosition) < 3) {
 
 //Create one string with symbols and our words and helps placed in the space that we created before
 $stringDump = "";
+$copyArrayWords = $arrayWords;
 while (strlen($stringDump) < CHAR_TOTAL) {
     $currentPos = strlen($stringDump);
     if (in_array($currentPos, $arrayWordsPosition)) {
@@ -71,14 +110,14 @@ while (strlen($stringDump) < CHAR_TOTAL) {
         $index = array_search($currentPos, $arrayHelpsPosition);
         $stringDump .= $arrayHelps[$index];
     } else {;
-        if( in_array((floor(strlen($stringDump) / 12)), $busyRows)){
+        if (in_array((floor(strlen($stringDump) / 12)), $busyRows)) {
             $stringDump .= $arraySymbols[rand(0, count($arraySymbols) - 1)];
-        }else{
-            if (floor(strlen($stringDump) / 12)%2 == 0) {
-                $auxArraySymbol = array_merge($arraySymbols,$arrayCloseBrackets);
+        } else {
+            if (floor(strlen($stringDump) / 12) % 2 == 0) {
+                $auxArraySymbol = array_merge($arraySymbols, $arrayCloseBrackets);
                 $stringDump .= $auxArraySymbol[rand(0, count($auxArraySymbol) - 1)];
-            }else{
-                $auxArraySymbol = array_merge($arraySymbols,$arrayOpenBrackets);
+            } else {
+                $auxArraySymbol = array_merge($arraySymbols, $arrayOpenBrackets);
                 $stringDump .= $auxArraySymbol[rand(0, count($auxArraySymbol) - 1)];
             }
         }

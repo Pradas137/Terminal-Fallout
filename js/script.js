@@ -3,11 +3,20 @@ window.addEventListener("load", function () {
     var symbols = document.getElementsByClassName('symbol');
     var prompt = document.getElementById('prompt');
     const passwordValue = document.getElementById('password').value;
+    console.log(passwordValue);
     var arrayPrompt = Array(16).fill("<br>");
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
     var startTime = Date.now();
+
+    //Hardcore game
+    var lastCoincidences = 0;
+    var hardcore = false;
+    var hardcoreElement = document.getElementById("hardcore");
+    if (hardcoreElement != null) {
+        hardcore = true;
+    }
 
     //Show initial attempts
     renewAttempts();
@@ -57,14 +66,18 @@ window.addEventListener("load", function () {
                 coincidentChar++;
             }
         }
-        spanToDots(wordId);
-
-        tries--;
-        renewAttempts();
-        if (tries === 0) {
-            lose();
+        if (hardcore && lastCoincidences > coincidentChar) {
+            endGame(false);
         } else {
-            renewPromptWord(wordId, coincidentChar);
+            lastCoincidences = coincidentChar;
+            spanToDots(wordId);
+            tries--;
+            renewAttempts();
+            if (tries === 0) {
+                lose();
+            } else {
+                renewPromptWord(wordId, coincidentChar);
+            }
         }
     }
 
@@ -111,8 +124,16 @@ window.addEventListener("load", function () {
 
     //Fill the failed attempts and the game time, in the HTML form, to send all the data for the ranking
     function win(finalTime) {
+        //Get de gamemode
+        var gamemodeElement = document.getElementById("difficulty");
+        if (gamemodeElement != null) {
+            gamemode = gamemodeElement.value;
+        } else {
+            gamemode = "easy";
+        }
         document.getElementById("failedAttempts").value = failedAttempts;
         document.getElementById("gameTime").value = finalTime;
+        document.getElementById("gamemode").value = gamemode;
         endGame(true)
     }
 
@@ -190,10 +211,10 @@ window.addEventListener("load", function () {
 
     //Calcualtes the time
     function clockRunning() {
-        var timeElapsed = new Date(Date.now() - startTime)
-            , min = timeElapsed.getUTCMinutes()
-            , sec = timeElapsed.getUTCSeconds()
-            , ms = timeElapsed.getUTCMilliseconds();
+        var timeElapsed = new Date(Date.now() - startTime),
+            min = timeElapsed.getUTCMinutes(),
+            sec = timeElapsed.getUTCSeconds(),
+            ms = timeElapsed.getUTCMilliseconds();
 
         //Render the time in the HTML
         document.getElementById("display-area").innerHTML =

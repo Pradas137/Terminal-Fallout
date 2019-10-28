@@ -32,12 +32,13 @@
       </div>
       <div id="winPanel" class="terminal hide">
           <div id="rankigForm" class="hide">
-              <img src="../resources/boy.jpg" alt="winBoy" width="85%">
+              <img src="../resources/boy.png" alt="winBoy" width="85%">
               <p>Enter your name to appear in the ranking</p>
-              <form action="../index.php" method="post">
+              <form action="./ranking.php" method="post">
                 <input type="text" name="name" required autofocus>
                 <input type="hidden"  name="failedAttempts" id="failedAttempts">
                 <input type="hidden" name="gameTime" id="gameTime">
+                <input type="hidden" name="gamemode" id="gamemode">
                 <input type="image" src="../resources/button.png" alt="submit" width="25%">
               </form>
             </div>

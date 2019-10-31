@@ -1,3 +1,10 @@
+<?php
+//If a session game exists, it is deleted
+session_start();
+if (isset($_SESSION["game"])) {
+  unset($_SESSION["game"]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

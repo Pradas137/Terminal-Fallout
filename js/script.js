@@ -3,6 +3,8 @@ window.addEventListener("load", function () {
     var symbols = document.getElementsByClassName('symbol');
     var prompt = document.getElementById('prompt');
     const passwordValue = document.getElementById('password').value;
+    var helpsType1 = 0;
+    var helpsType2 = 0;
     console.log(passwordValue);
     var arrayPrompt = Array(16).fill("<br>");
     var tries = 4;
@@ -15,7 +17,9 @@ window.addEventListener("load", function () {
     var hardcore = false;
     var hardcoreElement = document.getElementById("hardcore");
     if (hardcoreElement != null) {
-        hardcore = true;
+        if (hardcoreElement.value === "on") {
+            hardcore = true;
+        }
     }
 
     //Show initial attempts
@@ -36,13 +40,11 @@ window.addEventListener("load", function () {
         var symbolId = event.target.id;
         if (gameRun) {
             spanToDots(symbolId);
-            //Randomly select the type of help
-            if (Math.random() < 0.5) {
-                removeDudWord();
-                renewPromptSymbol(symbolId, "REMOVE")
+            //Randomly select the type of help, always at least 1 type of each
+            if (helpsType1 + helpsType2 === 2 && helpsType1 != helpsType2) {
+                (helpsType1 > helpsType2) ? helpType2() : helpType1();
             } else {
-                resetAttempts();
-                renewPromptSymbol(symbolId, "RESET")
+                (Math.random() < 0.5) ? helpType1() : helpType2();
             }
         }
     }
@@ -180,6 +182,18 @@ window.addEventListener("load", function () {
     function promptQueue(value) {
         arrayPrompt.shift();
         arrayPrompt.push(">" + value + "<br>");
+    }
+
+    function helpType1() {
+        helpsType1++;
+        removeDudWord();
+        renewPromptSymbol(symbolId, "REMOVE")
+    }
+
+    function helpType2() {
+        helpsType2++;
+        resetAttempts();
+        renewPromptSymbol(symbolId, "RESET")
     }
 
     function removeDudWord() {

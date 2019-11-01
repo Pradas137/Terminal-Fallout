@@ -13,16 +13,19 @@ if (isset($_SESSION["game"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/mainMenu.css">
-  <title>Game Menu</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="./js/menu.js"></script>
+  <title>Game Menu</title>
 </head>
 
 <body>
   <div id="container">
     <h1>Terminal Fallout</h1>
-    <div id="menu" class="buttons">
-      <button id="play">Play</button>
-      <button onclick="window.location.href='php/ranking.php'">Ranking</button>
+    <div id="menu">
+      <div class="buttons">
+        <button class="button" id="play">Play</button>
+        <button class="button" onclick="window.location.href='php/ranking.php'">Ranking</button>
+      </div>
     </div>
     <div id="mode" class="hide">
       <form action="./php/game.php">
@@ -40,6 +43,10 @@ if (isset($_SESSION["game"])) {
         </div>
       </form>
     </div>
+  </div>
+  <div id="options">
+    <i id="volume" class="material-icons"> volume_up </i>
+    <i id="colorBlindness" class="material-icons off"> visibility_off </i>
   </div>
 </body>
 

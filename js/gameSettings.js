@@ -3,11 +3,7 @@ window.addEventListener("load", function () {
     var volume = document.getElementById("volume");
     var colorBlindnessActivated = false;
     var colorBlindness = document.getElementById("colorBlindness");
-
-    document.getElementById("play").addEventListener("click", function () {
-        document.getElementById("menu").classList.add("hide");
-        document.getElementById("mode").classList.remove("hide");
-    });
+    var gamePanel = document.getElementById('gamePanel');
 
     //Volume control
     volume.addEventListener("click", function () {
@@ -29,9 +25,12 @@ window.addEventListener("load", function () {
             colorBlindness.innerHTML = "visibility_off";
 
             //Remove the class from the HTML entites
+            gamePanel.classList.add("screenEffect");
             document.body.classList.remove("colorBlindness");
-            document.getElementById("menu").classList.remove("cBlindness");
-            document.getElementById("mode").classList.remove("cBlindness");
+            removeClass(document.getElementsByClassName("word"), "hoverColorBlindness");
+            removeClass(document.getElementsByClassName("symbol"), "hoverColorBlindness");
+            document.getElementById("rankigForm").classList.remove("cBlindness")
+            document.getElementById("losePanel").classList.remove("cBlindness")
             document.getElementById("options").classList.remove("bordercolorBlindness")
         } else {
             colorBlindnessActivated = true;
@@ -39,10 +38,25 @@ window.addEventListener("load", function () {
             colorBlindness.innerHTML = "visibility";
 
             //Add the class to HTML entites that apply a special style
+            gamePanel.classList.remove("screenEffect");
             document.body.classList.add("colorBlindness");
-            document.getElementById("menu").classList.add("cBlindness");
-            document.getElementById("mode").classList.add("cBlindness");
+            addClass(document.getElementsByClassName("word"), "hoverColorBlindness");
+            addClass(document.getElementsByClassName("symbol"), "hoverColorBlindness");
+            document.getElementById("rankigForm").classList.add("cBlindness")
+            document.getElementById("losePanel").classList.add("cBlindness")
             document.getElementById("options").classList.add("bordercolorBlindness")
         }
     });
+
+    function addClass(elements, classN) {
+        for (let index = 0; index < elements.length; index++) {
+            elements[index].classList.add(classN);
+        }
+    }
+
+    function removeClass(elements, classN) {
+        for (let index = 0; index < elements.length; index++) {
+            elements[index].classList.remove(classN);
+        }
+    }
 })

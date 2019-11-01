@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/ranking.css">
+    <script src="../js/ranking.js"></script>
     <title>Ranking</title>
 </head>
 
@@ -50,8 +52,11 @@
         }
         ?>
     </table>
-    <div class="buttonContainer">
+    <div class="buttons">
         <button onclick="window.location.href='../index.php'" class="button">Menu</button>
+    </div>
+    <div id="options">
+        <i id="colorBlindness" class="material-icons off"> visibility_off </i>
     </div>
 
 </body>

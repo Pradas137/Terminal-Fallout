@@ -42,9 +42,9 @@ window.addEventListener("load", function () {
             spanToDots(symbolId);
             //Randomly select the type of help, always at least 1 type of each
             if (helpsType1 + helpsType2 === 2 && helpsType1 != helpsType2) {
-                (helpsType1 > helpsType2) ? helpType2() : helpType1();
+                (helpsType1 > helpsType2) ? helpType2(symbolId) : helpType1(symbolId);
             } else {
-                (Math.random() < 0.5) ? helpType1() : helpType2();
+                (Math.random() < 0.5) ? helpType1(symbolId) : helpType2(symbolId);
             }
         }
     }
@@ -89,12 +89,12 @@ window.addEventListener("load", function () {
         var spanValue;
 
         //If the <span> is a Symbol, we will use the innerText to get the value,to avoid the escaped text that innerHTML would return
-        if (targetSpan.className === "symbol") {
+        if (targetSpan.classList.contains("symbol")) {
             spanValue = targetSpan.innerText;
             targetSpan.classList.remove('symbol');
             targetSpan.removeEventListener("click", symbolHelp);
             //If the <span> is a word, we will use the innerHTML to get the value that includes '<br>'
-        } else if (targetSpan.className === "word") {
+        } else if (targetSpan.classList.contains("word")) {
             spanValue = targetSpan.innerHTML;
             targetSpan.classList.remove('word');
             targetSpan.removeEventListener("click", checkPassword);
@@ -146,16 +146,13 @@ window.addEventListener("load", function () {
     function endGame(win) {
         gameRun = false;
         //Hide the gamePanel and show the win or lose panel
-        var gamePanel = document.getElementById('gamePanel');
-        gamePanel.classList += " hide";
+        document.getElementById('gamePanel').classList.add("hide");
 
         if (win) {
-            var winPanel = document.getElementById('winPanel');
-            winPanel.classList = "terminal";
-            document.getElementById("rankigForm").classList = "";
+            document.getElementById('winPanel').classList.remove("hide");
+            document.getElementById("rankigForm").classList.remove("hide");
         } else {
-            var losePanel = document.getElementById('losePanel');
-            losePanel.classList = "terminal";
+            document.getElementById('losePanel').classList.remove("hide");
         }
     }
 
@@ -184,13 +181,13 @@ window.addEventListener("load", function () {
         arrayPrompt.push(">" + value + "<br>");
     }
 
-    function helpType1() {
+    function helpType1(symbolId) {
         helpsType1++;
         removeDudWord();
         renewPromptSymbol(symbolId, "REMOVE")
     }
 
-    function helpType2() {
+    function helpType2(symbolId) {
         helpsType2++;
         resetAttempts();
         renewPromptSymbol(symbolId, "RESET")

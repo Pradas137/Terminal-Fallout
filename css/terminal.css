@@ -1,4 +1,6 @@
 @import url("effects.css");
+@import url("settingsBar.css");
+@import url("colorBlindness.css");
 html, body {
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.4vw;
@@ -143,7 +145,7 @@ html, body {
 
 #losePanel {
   text-align: center;
-  margin-top: -0;
+  margin-top: -5%;
   margin-left: 19%;
 }
 
@@ -163,19 +165,6 @@ html, body {
   animation: flicker-in-1 2s linear both;
 }
 
-#losePanel input[type=text] {
-  border: 3px solid #08B304;
-  border-radius: 20px;
-  width: 100%;
-  text-align: center;
-}
-
-#losePanel input[type=image] {
-  margin-top: 10px;
-  color: #08B304;
-  display: inline-block;
-}
-
 .buttons {
   margin-top: 4%;
   display: inline-block;
@@ -183,7 +172,7 @@ html, body {
 
 .button {
   background-color: #000501;
-  border: 1px solid #08B304;
+  border: 2px solid #08B304;
   color: #08B304;
   text-align: center;
   font-size: 1.25vw;
@@ -201,6 +190,12 @@ html, body {
 
 /* Responsive styles */
 
+@media only screen and (max-width: 1550px) and (min-width: 1500px) {
+  .terminal {
+    margin-top: 2.5%;
+  }
+}
+
 @media only screen and (max-width: 1250px) and (min-width: 1150px) {
   body {
     font-size: 2.2vh;
@@ -217,18 +212,18 @@ html, body {
     font-size: 2.5vh;
   }
   .terminal {
-    margin-top: 8vw;
+    margin-top: 6.5%;
     margin-left: 18%;
-    width: 65%;
-  }
-  #losePanel {
-    margin-top: -7%;
-    margin-left: 13%;
     width: 65%;
   }
   #winPanel {
     margin-left: 13%;
     width: 65%;
+  }
+  #losePanel {
+    font-size: 3vh;
+    width: 60%;
+    margin-left: 15%;
   }
 }
 
@@ -259,7 +254,7 @@ html, body {
   #losePanel {
     font-size: 3vh;
     width: 70%;
-    margin-top: -4%;
+    margin-top: -6%;
     margin-left: 0%;
   }
   #losePanel>img {
@@ -273,7 +268,6 @@ html, body {
   .background {
     background: black;
   }
-  
   .terminal {
     font-size: 3.8vw;
     margin-left: 5%;
@@ -321,16 +315,32 @@ html, body {
   .buttons>.button {
     font-size: 4.5vw;
   }
+  /* Settings bar mobile */
+  #options {
+    display: grid;
+    padding: 3px 3% 2px 0;
+    border-radius: 0;
+  }
+  #options>i {
+    padding-bottom: 8px;
+    font-size: 3vh;
+  }
+  #options>i:first-child {
+    padding-top: 5px;
+  }
 }
 
 /* Effect of an old-style screen display 
 https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
 
+#gamePanel {
+  position: absolute;
+}
+
 .screenEffect {
   animation: colorPulse 6s infinite ease-in-out;
   box-sizing: border-box;
   overflow: hidden;
-  position: absolute;
 }
 
 .screenEffect:before {

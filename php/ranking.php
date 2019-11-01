@@ -19,21 +19,6 @@
             <th>TIME (s)</th>
         </tr>
         <?php
-        //Add the record to the file
-        if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
-            $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";
-            $fileRankingData = '../resources/rankingData.txt';
-            if (file_exists($fileRankingData)) {
-                $previousData = file_get_contents($fileRankingData);
-            } else {
-                $previousData = '';
-            }
-            file_put_contents($fileRankingData, "$previousData$record");
-
-            //Prevent multiple entry of the same data if the user reload the page
-            header('Location: ./ranking.php');
-        }
-
         //Import all the records from the file and append them to an array
         $records = explode("\n", trim(file_get_contents('../resources/rankingData.txt')));
 

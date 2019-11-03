@@ -64,6 +64,11 @@ tr:hover, .button:hover {
     -moz-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
     box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
 }
+#highlight>td{
+    color: black;
+    background-color: white;
+    border-left: white;
+}
 
 #options {
     top: 2%;

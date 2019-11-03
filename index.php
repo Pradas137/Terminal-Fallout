@@ -48,6 +48,9 @@ if (isset($_SESSION["game"])) {
     <i id="volume" class="material-icons"> volume_up </i>
     <i id="colorBlindness" class="material-icons off"> visibility_off </i>
   </div>
+  <div id="audioLibrary">
+    <audio id="sos" class="sound" src="./resources/sos-morse.wav"></audio>
+  </div>
 </body>
 
 </html>

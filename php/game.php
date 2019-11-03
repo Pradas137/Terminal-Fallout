@@ -41,6 +41,7 @@
       <p>Enter your name to appear in the ranking</p>
       <form action="./bridge.php" method="post">
         <?php
+        //If there is a name in the session, autocomplete the form
         if (isset($_SESSION["name"])) {
           $name = htmlspecialchars($_SESSION["name"]);
           echo "<input type='text' name='name' value=\"$name\" required autofocus>";
@@ -60,6 +61,7 @@
     <img src="../resources/nuclear_fungus.jpg" alt="nuclear fungus" width="75%">
     <div class="buttons">
       <?php
+      // The play again button needs send the data about the game mode and if it is a hardcore game 
       $hardcore = "";
       if (isset($_GET["hardcore"]) and $_GET["hardcore"] == "on") {
         $hardcore = "&hardcore=on";
@@ -83,6 +85,9 @@
     <i id="colorBlindness" class="material-icons off"> visibility_off </i>
   </div>
   <div id="rotate">Turn your device or resize your browser</div>
+  <div id="audioLibrary">
+    <audio id="sos" class="sound" src="path"></audio>
+  </div>
 </body>
 
 </html>

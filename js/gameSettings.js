@@ -4,6 +4,7 @@ window.addEventListener("load", function () {
     var colorBlindnessActivated = false;
     var colorBlindness = document.getElementById("colorBlindness");
     var gamePanel = document.getElementById('gamePanel');
+    var soundList = document.getElementsByClassName("sound");
 
     //Volume control
     volume.addEventListener("click", function () {
@@ -14,7 +15,7 @@ window.addEventListener("load", function () {
             muted = true;
             volume.innerHTML = "volume_off";
         }
-        document.muted = muted; //TODO
+        mute();
     });
 
     //Color mode control
@@ -24,7 +25,7 @@ window.addEventListener("load", function () {
             //Change the menu icon
             colorBlindness.innerHTML = "visibility_off";
 
-            //Remove the class from the HTML entites
+            //Remove the class of the HTML entities, to get the default style
             gamePanel.classList.add("screenEffect");
             document.body.classList.remove("colorBlindness");
             removeClass(document.getElementsByClassName("word"), "hoverColorBlindness");
@@ -37,7 +38,7 @@ window.addEventListener("load", function () {
             //Change the menu icon
             colorBlindness.innerHTML = "visibility";
 
-            //Add the class to HTML entites that apply a special style
+            //Add the class, to the HTML entities, to apply a special style
             gamePanel.classList.remove("screenEffect");
             document.body.classList.add("colorBlindness");
             addClass(document.getElementsByClassName("word"), "hoverColorBlindness");
@@ -47,6 +48,12 @@ window.addEventListener("load", function () {
             document.getElementById("options").classList.add("bordercolorBlindness")
         }
     });
+
+    function mute() {
+        for (let index = 0; index < soundList.length; index++) {
+            soundList[index].muted = muted;
+        }
+    }
 
     function addClass(elements, classN) {
         for (let index = 0; index < elements.length; index++) {

@@ -40,13 +40,24 @@
             });
             $rankingByTime[$i] = $subArray;
         }
-
+        //Check if have all the needed paramethers in the post 
+        $requiredPost = ['name', 'failedAttempts', 'gameTime'];
+        $missing = false;
+        foreach ($requiredPost as $key) {
+            if (!isset($_POST[$key])) {
+                $missing = true;
+            }
+        }
         //prints $rankingByAttempts like a table
         $index = 1;
         foreach ($rankingByTime as $array) {
             foreach ($array as  $att) {
                 $time = intval($att[2]) / 1000;
-                echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                if (!$missing and $_POST["name"] == $att[0] and $_POST["failedAttempts"] == $att[1] and ($_POST["gameTime"] == $att[2])) {
+                    echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                } else {
+                    echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                }
                 $index++;
             }
         }

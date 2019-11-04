@@ -64,6 +64,26 @@ tr:hover, .button:hover {
     -moz-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
     box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
 }
+
+.button-rank {
+    padding: 2%;
+    background-color: #000501;
+    border: 2px solid #08B304;
+    color: #08B304;
+    font-size: 2.5vw;
+    cursor: pointer;
+    width: 58%;
+    text-align: center;
+    margin-top: 3%;
+    margin-left: 0;
+    /* Add shadow */
+    -webkit-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    -moz-box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+    box-shadow: 24px 22px 7px 5px rgba(0, 0, 0, 0.64);
+}
+
+.adjust-left {margin-left: 10%;}
+
 #highlight > td {
     color: #000501;
     background-color: #08B304;

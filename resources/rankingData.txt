@@ -7,3 +7,5 @@ Carlos;2;6412;hard
 Maria;0;6819;easy
 Mariano;1;16045;easy
 Test;8;13040;normal
+Test;0;1080;easy
+Test;2;2384;easy

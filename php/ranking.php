@@ -18,7 +18,6 @@
       <label class="button-rank adjust-left" for="level-select">Select level:</label>
       <select class="button-rank" name="level-select" onchange='this.form.submit();'>
         <?php
-
         if ($_POST['level-select'] == "easy") {
           echo "<option value='easy' selected>Easy</option>";
           echo "<option value='normal'>Medium</option>";
@@ -47,16 +46,10 @@
             <th>TIME (s)</th>
         </tr>
         <?php
-        // if(isset($_POST['level-select'])){
-        //   $selected_val = $_POST['level-select'];
-        //   if ($selected_val == "easy") {
-        //     echo "Has elegido ver el nivel " . $selected_val;
-        //   } elseif ($selected_val == "normal") {
-        //     echo "Has elegido ver el nivel " . $selected_val;
-        //   } else if ($selected_val == "hard") {
-        //     echo "Has elegido ver el nivel " . $selected_val;
-        //   }
-        // }
+
+        if (empty($_POST["level-select"])) {
+          $_POST["level-select"] = "easy";
+        }
         //Import all the records from the file and append them to an array
         $records = explode("\n", trim(file_get_contents('../resources/rankingData.txt')));
 
@@ -90,20 +83,20 @@
         foreach ($rankingByTime as $array) {
             foreach ($array as  $att) {
                 $time = intval($att[2]) / 1000;
-                if ($_POST["level-select"] == "easy" and $att[3] == "easy") {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2]) and ($_POST["level-select"] == "easy")) {
+                if ($_POST["level-select"] == "easy" and $att[3] == $_POST["level-select"]) {
+                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
                     echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                   } else {
                     echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                   }
-                } elseif ($_POST["level-select"] == "normal" and $att[3] == "normal") {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2]) and ($_POST["level-select"] == "normal")) {
+                } elseif ($_POST["level-select"] == "normal" and $att[3] == $_POST["level-select"]) {
+                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
                     echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                   } else {
                     echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                   }
-                } elseif ($_POST["level-select"] == "hard" and $att[3] == "hard") {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2]) and ($_POST["level-select"] == "hard")) {
+                } elseif ($_POST["level-select"] == "hard" and $att[3] == $_POST["level-select"]) {
+                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
                     echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                   } else {
                     echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";

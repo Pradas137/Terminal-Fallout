@@ -40,7 +40,7 @@
             });
             $rankingByTime[$i] = $subArray;
         }
-        //Check if have all the needed paramethers in the post 
+        //Check if have all the needed paramethers in the post
         $requiredPost = ['name', 'failedAttempts', 'gameTime'];
         $missing = false;
         foreach ($requiredPost as $key) {

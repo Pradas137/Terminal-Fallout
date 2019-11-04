@@ -8,3 +8,6 @@ Maria;0;6819;easy;
 Mariano;1;16045;easy;
 hola;3;8006;easy
 hola;3;3452;easy
+Ferran;3;7655;normal
+Ferran;0;3194;easy
+Ferran;1;7814;

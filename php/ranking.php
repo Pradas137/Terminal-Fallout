@@ -15,7 +15,7 @@
 <body>
   <div class="buttons">
     <form method="post" class="rank-form">
-      <label class="button-rank adjust-left" for="level-select">Select level:</label>
+      <label class="button adjust-left" for="level-select">Select level:</label>
       <select class="button-rank" name="level-select" onchange='this.form.submit();'>
         <?php
         if ($_POST['level-select'] == "easy") {

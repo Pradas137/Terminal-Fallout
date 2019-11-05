@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
-    var startTime = Date.now();
+    var startTime;
 
     //Hardcore game
     var lastCoincidences = 0;
@@ -24,8 +24,6 @@ window.addEventListener("load", function () {
 
     //Show initial attempts
     renewAttempts();
-    //Start chronometer
-    setInterval(clockRunning, 10);
 
     //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
@@ -219,6 +217,13 @@ window.addEventListener("load", function () {
         tries = 4;
         renewAttempts();
     }
+
+    //Start chronometer when the animation ends, and remove the load effect
+    setTimeout(function () {
+        startTime = Date.now();
+        setInterval(clockRunning, 10);
+        document.getElementById("gamePanel").classList.remove("loadEffect");
+    }, 3000);
 
     //Calcualtes the time
     function clockRunning() {

@@ -74,15 +74,15 @@
       }
       echo "<button onclick=\"window.location.href='./bridge.php?$get'\" class='button'>Play Again</button>";
       ?>
-      <button onclick="window.location.href='../index.php'" class="button">Menu</button>
-      <button onclick="window.location.href='./ranking.php'" class="button">Ranking</button>
+      <button onclick="window.location.href='../index.php'" class="button" accesskey="m">Menu</button>
+      <button onclick="window.location.href='./ranking.php'" class="button" accesskey="r">Ranking</button>
     </div>
   </div>
   </div>
   <div id="options">
     <i id="home" onclick="window.location.href='../index.php'" class="material-icons">home</i>
-    <i id="volume" class="material-icons"> volume_up </i>
-    <i id="colorBlindness" class="material-icons off"> visibility_off </i>
+    <i id="volume" class="material-icons" accesskey="u"> volume_up </i>
+    <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
   </div>
   <div id="rotate">Turn your device or resize your browser</div>
   <div id="audioLibrary">

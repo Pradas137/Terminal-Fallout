@@ -23,16 +23,16 @@ if (isset($_SESSION["game"])) {
     <h1>Terminal Fallout</h1>
     <div id="menu">
       <div class="buttons">
-        <button class="button" id="play">Play</button>
-        <button class="button" onclick="window.location.href='php/ranking.php'">Ranking</button>
+        <button class="button" id="play" accesskey="p">Play</button>
+        <button class="button" onclick="window.location.href='php/ranking.php'" accesskey="r">Ranking</button>
       </div>
     </div>
     <div id="mode" class="hide">
       <form action="./php/game.php">
         <div class="buttons">
-          <input type="submit" value="easy" class="playButton">
-          <input type="submit" name="difficulty" value="normal" class="playButton">
-          <input type="submit" name="difficulty" value="hard" class="playButton"><br>
+          <input type="submit" value="easy" class="playButton" accesskey="y">
+          <input type="submit" name="difficulty" value="normal" class="playButton" accesskey="n">
+          <input type="submit" name="difficulty" value="hard" class="playButton" accesskey="h"><br>
           <div class="hardcore">
             <p>Hardcore</p>
             <div class="slide">
@@ -45,8 +45,8 @@ if (isset($_SESSION["game"])) {
     </div>
   </div>
   <div id="options">
-    <i id="volume" class="material-icons"> volume_up </i>
-    <i id="colorBlindness" class="material-icons off"> visibility_off </i>
+    <i id="volume" class="material-icons" accesskey="u"> volume_up </i>
+    <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
   </div>
   <div id="audioLibrary">
     <audio id="sos" class="sound" src="./resources/sos-morse.wav"></audio>

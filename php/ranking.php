@@ -64,10 +64,10 @@
         ?>
     </table>
     <div class="buttons">
-        <button onclick="window.location.href='../index.php'" class="button">Menu</button>
+        <button onclick="window.location.href='../index.php'" class="button" accesskey="m">Menu</button>
     </div>
     <div id="options">
-        <i id="colorBlindness" class="material-icons off"> visibility_off </i>
+        <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
     </div>
 
 </body>

@@ -17,8 +17,8 @@ if (isset($_GET["difficulty"])) {
 }
 //When you win and save a record
 //If recive a post method with a record save and reedirect to the ranking highlight this record
-if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"]) || !empty($_POST["gamemode"])) {
-    $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . ";" . $_POST["gamemode"] . "\n";
+if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"]) || !empty($_POST["level-select"])) {
+    $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . ";" . $_POST["level-select"] . "\n";
     $fileRankingData = '../resources/rankingData.txt';
     if (file_exists($fileRankingData)) {
         $previousData = file_get_contents($fileRankingData);

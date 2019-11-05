@@ -51,7 +51,7 @@
         ?>
         <input type="hidden" name="failedAttempts" id="failedAttempts">
         <input type="hidden" name="gameTime" id="gameTime">
-        <input type="hidden" name="gamemode" id="gamemode">
+        <input type="hidden" name="level-select" id="gamemode">
         <input type="image" src="../resources/button.png" alt="submit" width="25%">
       </form>
     </div>

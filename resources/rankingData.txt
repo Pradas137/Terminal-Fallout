@@ -11,3 +11,5 @@ hola;3;3452;easy
 Ferran;3;7655;normal
 Ferran;0;3194;easy
 Ferran;1;7814;
+Hola;0;1143;easy
+Adri no la lies;0;3300;normal

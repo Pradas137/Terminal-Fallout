@@ -15,7 +15,7 @@
 <body>
   <div class="buttons">
     <form method="post" class="rank-form">
-      <label class="button adjust-left" for="level-select">Select level:</label>
+        <label class="adjust-left" for="level-select">Select level:</label>
       <select class="button-rank" name="level-select" onchange='this.form.submit();'>
         <?php
         if ($_POST['level-select'] == "easy") {
@@ -79,31 +79,35 @@
             }
         }
         //prints $rankingByAttempts like a table
-        $index = 1;
+        $easyCount = 0;
+        $normalCount = 0;
+        $hardCount = 0;
         foreach ($rankingByTime as $array) {
-            foreach ($array as  $att) {
-                $time = intval($att[2]) / 1000;
-                if ($_POST["level-select"] == "easy" and $att[3] == $_POST["level-select"]) {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
-                    echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  } else {
-                    echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  }
-                } elseif ($_POST["level-select"] == "normal" and $att[3] == $_POST["level-select"]) {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
-                    echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  } else {
-                    echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  }
-                } elseif ($_POST["level-select"] == "hard" and $att[3] == $_POST["level-select"]) {
-                  if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
-                    echo "<tr id=highlight><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  } else {
-                    echo "<tr><td>" . $index . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
-                  }
+          foreach ($array as  $att) {
+              $time = intval($att[2]) / 1000;
+              if ($_POST["level-select"] == "easy" and $att[3] == $_POST["level-select"]) {
+                $easyCount ++;
+                if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
+                  echo "<tr id=highlight><td>" . $easyCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                } else {
+                  echo "<tr><td>" . $easyCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
                 }
-                $index++;
-            }
+              } elseif ($_POST["level-select"] == "normal" and $att[3] == $_POST["level-select"]) {
+                $normalCount ++;
+                if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
+                  echo "<tr id=highlight><td>" . $normalCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                } else {
+                  echo "<tr><td>" . $normalCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                }
+              } elseif ($_POST["level-select"] == "hard" and $att[3] == $_POST["level-select"]) {
+                $hardCount ++;
+                if (!$missing and $_POST["name"] == $att[0] and ($_POST["failedAttempts"] == $att[1]) and ($_POST["gameTime"] == $att[2])) {
+                  echo "<tr id=highlight><td>" . $hardCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                } else {
+                  echo "<tr><td>" . $hardCount . "</td><td>" . $att[0] . "</td><td>" . $att[1] . "</td><td>" . $time . "</tr>";
+                }
+              }
+          }
         }
         ?>
     </table>

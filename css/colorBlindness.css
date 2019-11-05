@@ -58,3 +58,13 @@
   color: #000501;
   background-color: white;
 }
+
+.cBlindness>label, .cBlindness>select {
+  color: white;
+  border-color: white;
+}
+
+.cBlindness>table>tbody>#highlight>td {
+  color: black;
+  background-color: white;
+}

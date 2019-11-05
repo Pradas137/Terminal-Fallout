@@ -8,7 +8,7 @@ body {
     color: #08B304;
     font-size: 2.5vw;
     margin-bottom: 3%;
-    font-family: arial;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 table {
@@ -69,10 +69,11 @@ tr:hover, .button:hover {
     color: #08B304;
     font-size: 2.5vw;
     cursor: pointer;
-    width: 58%;
+    width: 52%;
     text-align: center;
     margin-top: 3%;
     margin-left: 0;
+    font-family: 'Share Tech Mono', monospace;
 }
 
 .adjust-left {
@@ -107,8 +108,15 @@ tr:hover, .button:hover {
         font-size: 1.8vh;
         padding: 2%;
     }
-    .button {
+    .button{
         font-size: 2.5vh;
+    }
+    .button-rank{
+        font-size: 2vh;
+        width: 42%;
+    }
+    .adjust-left {
+        font-size: 2vh;
     }
     #options>i {
         font-size: 3vh;

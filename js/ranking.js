@@ -12,7 +12,8 @@ window.addEventListener("load", function () {
             //Remove the class of the HTML entities, to get the default style
             document.body.classList.remove("colorBlindness");
             document.body.classList.remove("cBlindness");
-            document.getElementById("options").classList.remove("bordercolorBlindness")
+            document.getElementById("options").classList.remove("bordercolorBlindness");
+            document.getElementById("rank-form").classList.remove("cBlindness");
         } else {
             colorBlindnessActivated = true;
             //Change the menu icon
@@ -21,7 +22,8 @@ window.addEventListener("load", function () {
             //Add the class, to the HTML entities, to apply a special style
             document.body.classList.add("colorBlindness");
             document.body.classList.add("cBlindness");
-            document.getElementById("options").classList.add("bordercolorBlindness")
+            document.getElementById("options").classList.add("bordercolorBlindness");
+            document.getElementById("rank-form").classList.add("cBlindness");
         }
     });
 })

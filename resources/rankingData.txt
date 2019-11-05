@@ -6,10 +6,3 @@ Carla;4;18147;normal;
 Carlos;2;6412;hard;
 Maria;0;6819;easy;
 Mariano;1;16045;easy;
-hola;3;8006;easy
-hola;3;3452;easy
-Ferran;3;7655;normal
-Ferran;0;3194;easy
-Ferran;1;7814;
-Hola;0;1143;easy
-Adri no la lies;0;3300;normal

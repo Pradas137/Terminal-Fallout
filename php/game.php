@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../css/terminal.css">
   <script src="../js/script.js"></script>
-  <script src="../js/gameSettings.js"></script>
   <title>Fallout Hack Terminal</title>
 </head>
 
@@ -78,8 +77,13 @@
       <button onclick="window.location.href='./ranking.php'" class="button" accesskey="r">Ranking</button>
     </div>
   </div>
+  <div id="easteregg" class="hide">
+      <img src="../resources/cake.jpg" alt="Easter Egg Image">
+    </div> 
   </div>
   <div id="options">
+    <!-- Test -->
+    <button id="egg">EEgg</button>
     <i id="home" onclick="window.location.href='../index.php'" class="material-icons">home</i>
     <i id="volume" class="material-icons" accesskey="u"> volume_up </i>
     <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>

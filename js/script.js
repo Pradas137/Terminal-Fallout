@@ -308,4 +308,25 @@ window.addEventListener("load", function () {
         }
     }
 
+
+    //Test
+    document.getElementById("egg").addEventListener("click", easterEgg);
+    
+    //Easter Egg
+    function easterEgg() {
+        document.getElementById("gamePanel").classList.add("clearEffect");
+        setTimeout(() => {
+            document.getElementById("gamePanel").classList.add("hide");
+            document.getElementById("easteregg").classList.remove("hide");
+            setTimeout(() => {
+                document.getElementById("gamePanel").classList.remove("clearEffect");
+                document.getElementById("easteregg").classList.add("hide");
+                document.getElementById("gamePanel").classList.remove("hide");
+                document.getElementById("gamePanel").classList.add("loadEffect");
+                setTimeout(() => {
+                    document.getElementById("gamePanel").classList.remove("loadEffect");
+                }, 3500);
+            }, 5000);
+        }, 5000);
+    }
 });

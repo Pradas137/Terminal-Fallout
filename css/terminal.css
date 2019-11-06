@@ -188,6 +188,12 @@ html, body {
   color: black;
 }
 
+#easteregg>img {
+  width: 63%;
+  margin-left: 17%;
+  animation: flicker-out-1 2s linear 3s both;
+}
+
 /* Responsive styles */
 
 @media only screen and (max-width: 1550px) and (min-width: 1500px) {
@@ -262,6 +268,10 @@ html, body {
     margin-left: 27%;
     display: block;
   }
+  #easteregg>img {
+    width: 50%;
+    margin-left: 13%;
+  }
 }
 
 @media only screen and (min-width: 350px)and (max-width: 450px) {
@@ -314,6 +324,11 @@ html, body {
   }
   .buttons>.button {
     font-size: 4.5vw;
+  }
+  #easteregg>img {
+    width: 100%;
+    margin-left: 4%;
+    margin-top: 33%;
   }
   /* Settings bar mobile */
   #options {
@@ -378,5 +393,15 @@ https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
 }
 
 .loadEffect {
-  animation: ocultar 3.25s ease 1.5s 1 normal both;
+  animation: desocultar 3.25s ease 1.5s 1 normal both;
+}
+
+.clearEffect {
+  animation: ocultar 3.25s ease 0s 1 normal both;
+}
+
+.clearEffect>div>p {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: destypewriter 2s ease-in-out 2.5s 1 normal both;
 }

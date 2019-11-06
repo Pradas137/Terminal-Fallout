@@ -6,7 +6,7 @@ window.addEventListener("load", function () {
     var soundList = document.getElementsByClassName("sound");
 
     document.getElementById("play").addEventListener("click", function () {
-        document.getElementById("sos").play();
+        document.getElementById("poweron").play();
         document.getElementById("menu").classList.add("hide");
         document.getElementById("mode").classList.remove("hide");
     });

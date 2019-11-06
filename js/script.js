@@ -44,6 +44,7 @@ window.addEventListener("load", function () {
 
     function symbolHelp(event) {
         var symbolId = event.target.id;
+        document.getElementById("key").play()
         if (gameRun) {
             spanToDots(symbolId);
             //If you use the 3 helps (in the Easy/Normal mode), before 10 sec you will see the easter egg 
@@ -66,9 +67,11 @@ window.addEventListener("load", function () {
         if (gameRun) {
             if (event.target.id === passwordValue) {
                 var timeDiff = new Date() - startTime;  //in ms
+                document.getElementById("win").play();
                 win(timeDiff);
             } else {
                 failedAttempts++;
+                document.getElementById("incorrect").play();
                 checkCoincidentChar(event.target.id);
             }
         }
@@ -89,6 +92,7 @@ window.addEventListener("load", function () {
             tries--;
             renewAttempts();
             if (tries === 0) {
+                document.getElementById("lose").play();
                 lose();
             } else {
                 renewPromptWord(wordId, coincidentChar);

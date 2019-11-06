@@ -46,6 +46,13 @@ window.addEventListener("load", function () {
         var symbolId = event.target.id;
         if (gameRun) {
             spanToDots(symbolId);
+            //If you use the 3 helps (in the Easy/Normal mode), before 10 sec you will see the easter egg 
+            if (helpsType1 + helpsType2 === 2) {
+                time = new Date() - startTime;
+                if (time < 10000) {
+                    easterEgg();
+                }
+            }
             //Randomly select the type of help, always at least 1 type of each
             if (helpsType1 + helpsType2 === 2 && helpsType1 != helpsType2) {
                 (helpsType1 > helpsType2) ? helpType2(symbolId) : helpType1(symbolId);
@@ -308,16 +315,13 @@ window.addEventListener("load", function () {
         }
     }
 
-
-    //Test
-    document.getElementById("egg").addEventListener("click", easterEgg);
-    
     //Easter Egg
     function easterEgg() {
         document.getElementById("gamePanel").classList.add("clearEffect");
         setTimeout(() => {
             document.getElementById("gamePanel").classList.add("hide");
             document.getElementById("easteregg").classList.remove("hide");
+            document.getElementById("help").play();
             setTimeout(() => {
                 document.getElementById("gamePanel").classList.remove("clearEffect");
                 document.getElementById("easteregg").classList.add("hide");

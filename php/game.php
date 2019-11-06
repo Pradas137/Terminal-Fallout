@@ -82,15 +82,13 @@
     </div> 
   </div>
   <div id="options">
-    <!-- Test -->
-    <button id="egg">EEgg</button>
     <i id="home" onclick="window.location.href='../index.php'" class="material-icons">home</i>
     <i id="volume" class="material-icons" accesskey="u"> volume_up </i>
     <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
   </div>
   <div id="rotate">Turn your device or resize your browser</div>
   <div id="audioLibrary">
-    <audio id="sos" class="sound" src="path"></audio>
+    <audio id="help" class="sound" src="../resources/sounds/help.mp3"></audio>
   </div>
 </body>
 

@@ -49,7 +49,7 @@ if (isset($_SESSION["game"])) {
     <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
   </div>
   <div id="audioLibrary">
-    <audio id="sos" class="sound" src="./resources/sos-morse.wav"></audio>
+    <audio id="poweron" class="sound" src="./resources/sounds/poweron.ogg"></audio>
   </div>
 </body>
 

@@ -89,6 +89,10 @@
   <div id="rotate">Turn your device or resize your browser</div>
   <div id="audioLibrary">
     <audio id="help" class="sound" src="../resources/sounds/help.mp3"></audio>
+    <audio id="win" class="sound" src="../resources/sounds/win.wav"></audio>
+    <audio id="incorrect" class="sound" src="../resources/sounds/incorrect.wav"></audio>
+    <audio id="lose" class="sound" src="../resources/sounds/lose.wav"></audio>
+    <audio id="key" class="sound" src="../resources/sounds/key.wav"></audio>
   </div>
 </body>
 

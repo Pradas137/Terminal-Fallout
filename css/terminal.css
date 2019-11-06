@@ -368,3 +368,15 @@ https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
 .symbol {
   color: red;
 }
+
+/* Load Animations */
+
+.loadEffect>div>p {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 2s ease-in-out 0s 1 normal both;
+}
+
+.loadEffect {
+  animation: ocultar 3.25s ease 1.5s 1 normal both;
+}

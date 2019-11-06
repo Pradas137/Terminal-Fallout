@@ -6,6 +6,28 @@
     }
 }
 
+/* Load effect */
+
+@keyframes ocultar {
+    from {
+        height: 4%;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+/* typewrite effect */
+
+@keyframes typewriter {
+    from {
+        width: 0.5%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
 /* Effect of an old-style screen display 
 https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
 

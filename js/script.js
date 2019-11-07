@@ -5,7 +5,6 @@ window.addEventListener("load", function () {
     const passwordValue = document.getElementById('password').value;
     var helpsType1 = 0;
     var helpsType2 = 0;
-    console.log(passwordValue);
     var arrayPrompt = Array(16).fill("<br>");
     var tries = 4;
     var gameRun = true;

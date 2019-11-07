@@ -374,16 +374,6 @@ https://gist.github.com/CodeMyUI/1d83fbd4904edd7021c06f8dfd0f14c9*/
   pointer-events: none;
 }
 
-/* Test only */
-
-.word {
-  color: yellow;
-}
-
-.symbol {
-  color: red;
-}
-
 /* Load Animations */
 
 .loadEffect>div>p {

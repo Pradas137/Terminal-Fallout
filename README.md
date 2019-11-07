@@ -24,6 +24,9 @@ Para empezar  arrancar Apache, y luego en tu navegador acceder: localhost/(nombr
 
 ## [Retrospectiva](https://github.com/RubenHCCH/Terminal-Fallout/wiki/Retrospective-Sprint2)
 
+## Easter Egg
+En el modo de juego easy o normal usa las 3 ayudas antes de 10 segundos.
+
 ## Construido con
 - PHP
 - JavaScript

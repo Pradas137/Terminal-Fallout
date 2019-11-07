@@ -3,16 +3,34 @@ window.addEventListener("load", function () {
     var symbols = document.getElementsByClassName('symbol');
     var prompt = document.getElementById('prompt');
     const passwordValue = document.getElementById('password').value;
+    var helpsType1 = 0;
+    var helpsType2 = 0;
     var arrayPrompt = Array(16).fill("<br>");
     var tries = 4;
     var gameRun = true;
     var failedAttempts = 0;
-    var startTime = Date.now();
+    var startTime;
+
+    //Accesibility
+    var muted = false;
+    var volume = document.getElementById("volume");
+    var colorBlindnessActivated = false;
+    var colorBlindness = document.getElementById("colorBlindness");
+    var gamePanel = document.getElementById('gamePanel');
+    var soundList = document.getElementsByClassName("sound");
+
+    //Hardcore game
+    var lastCoincidences = 0;
+    var hardcore = false;
+    var hardcoreElement = document.getElementById("hardcore");
+    if (hardcoreElement != null) {
+        if (hardcoreElement.value === "on") {
+            hardcore = true;
+        }
+    }
 
     //Show initial attempts
     renewAttempts();
-    //Start chronometer
-    setInterval(clockRunning, 10);
 
     //Add event listener to all the words
     for (let index = 0; index < words.length; index++) {
@@ -25,15 +43,21 @@ window.addEventListener("load", function () {
 
     function symbolHelp(event) {
         var symbolId = event.target.id;
+        document.getElementById("key").play()
         if (gameRun) {
             spanToDots(symbolId);
-            //Randomly select the type of help
-            if (Math.random() < 0.5) {
-                removeDudWord();
-                renewPromptSymbol(symbolId, "REMOVE")
+            //If you use the 3 helps (in the Easy/Normal mode), before 10 sec you will see the easter egg 
+            if (helpsType1 + helpsType2 === 2) {
+                time = new Date() - startTime;
+                if (time < 10000) {
+                    easterEgg();
+                }
+            }
+            //Randomly select the type of help, always at least 1 type of each
+            if (helpsType1 + helpsType2 === 2 && helpsType1 != helpsType2) {
+                (helpsType1 > helpsType2) ? helpType2(symbolId) : helpType1(symbolId);
             } else {
-                resetAttempts();
-                renewPromptSymbol(symbolId, "RESET")
+                (Math.random() < 0.5) ? helpType1(symbolId) : helpType2(symbolId);
             }
         }
     }
@@ -42,9 +66,11 @@ window.addEventListener("load", function () {
         if (gameRun) {
             if (event.target.id === passwordValue) {
                 var timeDiff = new Date() - startTime;  //in ms
+                document.getElementById("win").play();
                 win(timeDiff);
             } else {
                 failedAttempts++;
+                document.getElementById("incorrect").play();
                 checkCoincidentChar(event.target.id);
             }
         }
@@ -57,14 +83,19 @@ window.addEventListener("load", function () {
                 coincidentChar++;
             }
         }
-        spanToDots(wordId);
-
-        tries--;
-        renewAttempts();
-        if (tries === 0) {
-            lose();
+        if (hardcore && lastCoincidences > coincidentChar) {
+            endGame(false);
         } else {
-            renewPromptWord(wordId, coincidentChar);
+            lastCoincidences = coincidentChar;
+            spanToDots(wordId);
+            tries--;
+            renewAttempts();
+            if (tries === 0) {
+                document.getElementById("lose").play();
+                lose();
+            } else {
+                renewPromptWord(wordId, coincidentChar);
+            }
         }
     }
 
@@ -74,12 +105,12 @@ window.addEventListener("load", function () {
         var spanValue;
 
         //If the <span> is a Symbol, we will use the innerText to get the value,to avoid the escaped text that innerHTML would return
-        if (targetSpan.className === "symbol") {
+        if (targetSpan.classList.contains("symbol")) {
             spanValue = targetSpan.innerText;
             targetSpan.classList.remove('symbol');
             targetSpan.removeEventListener("click", symbolHelp);
             //If the <span> is a word, we will use the innerHTML to get the value that includes '<br>'
-        } else if (targetSpan.className === "word") {
+        } else if (targetSpan.classList.contains("word")) {
             spanValue = targetSpan.innerHTML;
             targetSpan.classList.remove('word');
             targetSpan.removeEventListener("click", checkPassword);
@@ -111,8 +142,16 @@ window.addEventListener("load", function () {
 
     //Fill the failed attempts and the game time, in the HTML form, to send all the data for the ranking
     function win(finalTime) {
+        //Get de gamemode
+        var gamemodeElement = document.getElementById("difficulty");
+        if (gamemodeElement != null) {
+            gamemode = gamemodeElement.value;
+        } else {
+            gamemode = "easy";
+        }
         document.getElementById("failedAttempts").value = failedAttempts;
         document.getElementById("gameTime").value = finalTime;
+        document.getElementById("gamemode").value = gamemode;
         endGame(true)
     }
 
@@ -123,16 +162,13 @@ window.addEventListener("load", function () {
     function endGame(win) {
         gameRun = false;
         //Hide the gamePanel and show the win or lose panel
-        var gamePanel = document.getElementById('gamePanel');
-        gamePanel.classList += " hide";
+        document.getElementById('gamePanel').classList.add("hide");
 
         if (win) {
-            var winPanel = document.getElementById('winPanel');
-            winPanel.classList = "terminal";
-            document.getElementById("rankigForm").classList = "";
+            document.getElementById('winPanel').classList.remove("hide");
+            document.getElementById("rankigForm").classList.remove("hide");
         } else {
-            var losePanel = document.getElementById('losePanel');
-            losePanel.classList = "terminal";
+            document.getElementById('losePanel').classList.remove("hide");
         }
     }
 
@@ -159,6 +195,18 @@ window.addEventListener("load", function () {
     function promptQueue(value) {
         arrayPrompt.shift();
         arrayPrompt.push(">" + value + "<br>");
+    }
+
+    function helpType1(symbolId) {
+        helpsType1++;
+        removeDudWord();
+        renewPromptSymbol(symbolId, "REMOVE")
+    }
+
+    function helpType2(symbolId) {
+        helpsType2++;
+        resetAttempts();
+        renewPromptSymbol(symbolId, "RESET")
     }
 
     function removeDudWord() {
@@ -188,12 +236,19 @@ window.addEventListener("load", function () {
         renewAttempts();
     }
 
+    //Start chronometer when the animation ends, and remove the load effect
+    setTimeout(function () {
+        startTime = Date.now();
+        setInterval(clockRunning, 10);
+        document.getElementById("gamePanel").classList.remove("loadEffect");
+    }, 3000);
+
     //Calcualtes the time
     function clockRunning() {
-        var timeElapsed = new Date(Date.now() - startTime)
-            , min = timeElapsed.getUTCMinutes()
-            , sec = timeElapsed.getUTCSeconds()
-            , ms = timeElapsed.getUTCMilliseconds();
+        var timeElapsed = new Date(Date.now() - startTime),
+            min = timeElapsed.getUTCMinutes(),
+            sec = timeElapsed.getUTCSeconds(),
+            ms = timeElapsed.getUTCMilliseconds();
 
         //Render the time in the HTML
         document.getElementById("display-area").innerHTML =
@@ -201,4 +256,84 @@ window.addEventListener("load", function () {
             (sec > 9 ? sec : "0" + sec) + "." +
             (ms > 99 ? ms : ms > 9 ? "0" + ms : "00" + ms);
     };
+
+    //Volume control
+    volume.addEventListener("click", function () {
+        if (muted) {
+            muted = false;
+            volume.innerHTML = "volume_up";
+        } else {
+            muted = true;
+            volume.innerHTML = "volume_off";
+        }
+        mute();
+    });
+
+    //Color mode control
+    colorBlindness.addEventListener("click", function () {
+        if (colorBlindnessActivated) {
+            colorBlindnessActivated = false;
+            //Change the menu icon
+            colorBlindness.innerHTML = "visibility_off";
+
+            //Remove the class of the HTML entities, to get the default style
+            gamePanel.classList.add("screenEffect");
+            document.body.classList.remove("colorBlindness");
+            removeClass(document.getElementsByClassName("word"), "hoverColorBlindness");
+            removeClass(document.getElementsByClassName("symbol"), "hoverColorBlindness");
+            document.getElementById("rankigForm").classList.remove("cBlindness")
+            document.getElementById("losePanel").classList.remove("cBlindness")
+            document.getElementById("options").classList.remove("bordercolorBlindness")
+        } else {
+            colorBlindnessActivated = true;
+            //Change the menu icon
+            colorBlindness.innerHTML = "visibility";
+
+            //Add the class, to the HTML entities, to apply a special style
+            gamePanel.classList.remove("screenEffect");
+            document.body.classList.add("colorBlindness");
+            addClass(document.getElementsByClassName("word"), "hoverColorBlindness");
+            addClass(document.getElementsByClassName("symbol"), "hoverColorBlindness");
+            document.getElementById("rankigForm").classList.add("cBlindness")
+            document.getElementById("losePanel").classList.add("cBlindness")
+            document.getElementById("options").classList.add("bordercolorBlindness")
+        }
+    });
+
+    function mute() {
+        for (let index = 0; index < soundList.length; index++) {
+            soundList[index].muted = muted;
+        }
+    }
+
+    function addClass(elements, classN) {
+        for (let index = 0; index < elements.length; index++) {
+            elements[index].classList.add(classN);
+        }
+    }
+
+    function removeClass(elements, classN) {
+        for (let index = 0; index < elements.length; index++) {
+            elements[index].classList.remove(classN);
+        }
+    }
+
+    //Easter Egg
+    function easterEgg() {
+        document.getElementById("gamePanel").classList.add("clearEffect");
+        setTimeout(() => {
+            document.getElementById("gamePanel").classList.add("hide");
+            document.getElementById("easteregg").classList.remove("hide");
+            document.getElementById("help").play();
+            setTimeout(() => {
+                document.getElementById("gamePanel").classList.remove("clearEffect");
+                document.getElementById("easteregg").classList.add("hide");
+                document.getElementById("gamePanel").classList.remove("hide");
+                document.getElementById("gamePanel").classList.add("loadEffect");
+                setTimeout(() => {
+                    document.getElementById("gamePanel").classList.remove("loadEffect");
+                }, 3500);
+            }, 5000);
+        }, 5000);
+    }
 });

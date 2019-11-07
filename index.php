@@ -1,3 +1,10 @@
+<?php
+//If a session game exists, it is deleted
+session_start();
+if (isset($_SESSION["game"])) {
+  unset($_SESSION["game"]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,33 +13,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/mainMenu.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="./js/menu.js"></script>
   <title>Game Menu</title>
 </head>
 
 <body>
-  <div class="container">
+  <div id="container">
     <h1>Terminal Fallout</h1>
-    <div class="buttons">
-      <button onclick="window.location.href='php/game.php'">Game</button>
-      <button onclick="window.location.href='php/ranking.php'">Ranking</button>
+    <div id="menu">
+      <div class="buttons">
+        <button class="button" id="play" accesskey="p">Play</button>
+        <button class="button" onclick="window.location.href='php/ranking.php'" accesskey="r">Ranking</button>
+      </div>
+    </div>
+    <div id="mode" class="hide">
+      <form action="./php/game.php">
+        <div class="buttons">
+          <input type="submit" value="easy" class="playButton" accesskey="y">
+          <input type="submit" name="difficulty" value="normal" class="playButton" accesskey="n">
+          <input type="submit" name="difficulty" value="hard" class="playButton" accesskey="h"><br>
+          <div class="hardcore">
+            <p>Hardcore</p>
+            <div class="slide">
+              <input name="hardcore" type="checkbox" id="slide" />
+              <label for="slide"></label>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  
-  <?php
-  if (!empty($_POST["name"]) || !empty($_POST["failedAttempts"]) || !empty($_POST["gameTime"])) {
-    $record = htmlspecialchars($_POST["name"]) . ";" . $_POST["failedAttempts"] . ";" . $_POST["gameTime"] . "\n";
-    $fileRankingData = './resources/rankingData.txt';
-    if (file_exists($fileRankingData)) {
-      $previousData = file_get_contents($fileRankingData);
-    } else {
-      $previousData = '';
-    }
-    file_put_contents($fileRankingData, "$previousData$record");
-
-    //Prevent multiple entry of the same data if the user reload the page
-    header('Location: ./index.php');
-  }
-  ?>
+  <div id="options">
+    <i id="volume" class="material-icons" accesskey="u"> volume_up </i>
+    <i id="colorBlindness" class="material-icons off" accesskey="d"> visibility_off </i>
+  </div>
+  <div id="audioLibrary">
+    <audio id="poweron" class="sound" src="./resources/sounds/poweron.ogg"></audio>
+  </div>
 </body>
 
 </html>
